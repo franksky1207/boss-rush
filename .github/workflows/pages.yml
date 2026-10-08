@@ -52,6 +52,7 @@ jobs:
       - run: npm run test:presentation
       - run: node tests/home-audio-browser.mjs
       - run: node tests/mobile-audio-browser.mjs
+      - run: node tests/music-browser.mjs
       - run: node tests/difficulty-browser.mjs
       - run: node tests/lifecycle-browser.mjs
       - run: node tests/visual-browser.mjs

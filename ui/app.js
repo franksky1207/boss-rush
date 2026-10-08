@@ -1,9 +1,9 @@
-import { evaluateResult, eligibleForLeaderboard, createRecord, validNickname } from '../core/results.js?v=0.9.4';
-import { LocalStore } from '../storage/local.js?v=0.9.4';
-import { Sound } from '../effects/sound.js?v=0.9.4';
-import { ACTIONS, DIFFICULTIES } from '../data/rules.js?v=0.9.4';
-import { Battle } from '../core/battle.js?v=0.9.4';
-import { Scene } from '../effects/scene.js?v=0.9.4';
+import { evaluateResult, eligibleForLeaderboard, createRecord, validNickname } from '../core/results.js?v=0.9.5';
+import { LocalStore } from '../storage/local.js?v=0.9.5';
+import { Sound } from '../effects/sound.js?v=0.9.5';
+import { ACTIONS, DIFFICULTIES } from '../data/rules.js?v=0.9.5';
+import { Battle } from '../core/battle.js?v=0.9.5';
+import { Scene } from '../effects/scene.js?v=0.9.5';
 
 const $ = id => document.getElementById(id);
 const battle = new Battle();
@@ -32,6 +32,10 @@ function formatTime(ms) {
 
 function render() {
   const state = battle.snapshot();
+  const musicButton = $('toggle-music');
+  musicButton.textContent = preferences.music ? '♫' : '♫×';
+  musicButton.setAttribute('aria-pressed', String(preferences.music));
+  musicButton.setAttribute('aria-label', preferences.music ? '關閉背景音樂' : '開啟背景音樂');
   const home = state.phase === 'home';
   const finished = state.phase === 'dead' || state.phase === 'victory';
   $('home').hidden = !home;
@@ -229,7 +233,7 @@ for (const button of document.querySelectorAll('[data-open-board]')) {
 $('close-settings').addEventListener('click', closePanel);
 $('close-board').addEventListener('click', closePanel);
 function changePreferences() {
-  preferences = store.savePreferences({ sound: $('sound-enabled').checked,
+  preferences = store.savePreferences({ ...preferences, sound: $('sound-enabled').checked,
     volume: Number($('volume').value), reducedEffects: $('reduced-effects').checked });
   sound.configure(preferences);
   // 啟用開關／調整音量本身也是使用者互動。
@@ -240,6 +244,12 @@ function changePreferences() {
 $('sound-enabled').addEventListener('change', changePreferences);
 $('reduced-effects').addEventListener('change', changePreferences);
 $('volume').addEventListener('input', changePreferences);
+$('toggle-music').addEventListener('click', () => {
+  preferences = store.savePreferences({ ...preferences, music: !preferences.music });
+  sound.configure(preferences);
+  if (preferences.music) void sound.unlock();
+  render();
+});
 $('test-sound').addEventListener('click', () => {
   void sound.unlock().then(enabled => {
     if (enabled && auxiliary === 'settings' && !document.hidden) sound.play('attack', 'PERFECT');

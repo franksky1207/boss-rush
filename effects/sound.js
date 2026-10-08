@@ -53,7 +53,8 @@ export class Sound {
   }
 
   configure(settings) {
-    this.#settings = { sound: settings.sound, volume: settings.volume };
+    this.#settings = { sound: settings.sound, music: settings.music ?? true, volume: settings.volume };
+    if (!this.#settings.music) this.#stopMusic();
     if (!settings.sound || settings.volume === 0) this.stop();
     if (this.#master) this.#master.gain.value = settings.sound ? settings.volume / 100 * 0.22 : 0;
   }
@@ -204,7 +205,7 @@ export class Sound {
   }
 
   #startMusic() {
-    if (this.#music || !this.#settings.sound || !this.#settings.volume || this.#context?.state !== 'running' || !this.#context.createBufferSource) return;
+    if (this.#music || this.#settings.music === false || !this.#settings.sound || !this.#settings.volume || this.#context?.state !== 'running' || !this.#context.createBufferSource) return;
     try {
       if (!this.#musicBuffer) {
         const rate = this.#context.sampleRate;

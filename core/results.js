@@ -1,4 +1,4 @@
-import { DIFFICULTIES } from '../data/rules.js?v=0.9.4';
+import { DIFFICULTIES } from '../data/rules.js?v=0.9.5';
 export const RESULT_VERSION = 1;
 export const GRADES = Object.freeze(['SSS', 'SS', 'S', 'A', 'B', 'C']);
 

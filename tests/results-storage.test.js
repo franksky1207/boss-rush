@@ -112,7 +112,7 @@ test('偏好開關與音量驗證、保存／重載；清榜不清設定，失�
   assert.equal(normalizePreferences({volume:-1}).volume,0);
   assert.equal(normalizePreferences({volume:101}).volume,100);
   const storage = memory(), store = new LocalStore({storage:()=>storage});
-  const preferences = {sound:false,volume:37,reducedEffects:true};
+  const preferences = {sound:false,music:false,volume:37,reducedEffects:true};
   store.savePreferences(preferences);
   store.add(record('a')); store.clear();
   assert.deepEqual(new LocalStore({storage:()=>storage}).loadPreferences(),preferences);

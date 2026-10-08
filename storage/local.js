@@ -1,12 +1,13 @@
-import { topRecords, validRecord } from '../core/results.js?v=0.9.4';
+import { topRecords, validRecord } from '../core/results.js?v=0.9.5';
 
 export const PREFERENCES_KEY = 'boss-rush.preferences.v1';
 export const LEADERBOARD_KEY = 'boss-rush.leaderboard.v1';
-export const DEFAULT_PREFERENCES = Object.freeze({ sound: true, volume: 70, reducedEffects: false });
+export const DEFAULT_PREFERENCES = Object.freeze({ sound: true, music: true, volume: 70, reducedEffects: false });
 
 export function normalizePreferences(value, defaults = DEFAULT_PREFERENCES) {
   return {
     sound: typeof value?.sound === 'boolean' ? value.sound : defaults.sound,
+    music: typeof value?.music === 'boolean' ? value.music : defaults.music ?? true,
     volume: Number.isFinite(value?.volume) ? Math.round(Math.min(100, Math.max(0, value.volume))) : defaults.volume,
     reducedEffects: typeof value?.reducedEffects === 'boolean' ? value.reducedEffects : defaults.reducedEffects,
   };
