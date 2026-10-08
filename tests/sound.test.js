@@ -81,3 +81,38 @@ test('同回合影格、暫停恢復不重播；暫停／退出終止音效，�
   sound.update({...state,phase:'home'});
   assert.equal(fake.oscillators.every(node=>node.stopped),true);
 });
+
+test('配樂單一循環、音效不中斷；暫停／靜音／返家停止，恢復可重啟', async () => {
+  const fake=audio(), sources=[];
+  fake.context.sampleRate=8000;
+  fake.context.createBuffer=(_channels,length)=>({getChannelData:()=>new Float32Array(length)});
+  fake.context.createBufferSource=()=>{
+    const source={start(){this.started=true;},stop(){this.stopped=true;},connect(){},disconnect(){}};
+    sources.push(source);return source;
+  };
+  const sound=new Sound({createContext:()=>fake.context});
+  const state={session:1,turn:1,phase:'awaiting',paused:false};
+  sound.update(state);
+  assert.equal(sources.length,0);
+  await sound.unlock();
+  sound.update(state);
+  const track=sources.at(-1);
+  assert.equal(track.loop,true);
+  assert.ok(track.buffer.getChannelData(0).length>0);
+  for(let i=0;i<100;i++) sound.update(state);
+  assert.equal(sources.filter(s=>s.loop).length,1);
+  sound.play('attack');
+  assert.equal(track.stopped,undefined);
+  sound.update({...state,paused:true});
+  assert.equal(track.stopped,true);
+  sound.update(state);
+  assert.equal(sources.filter(s=>s.loop).length,2);
+  sound.configure({sound:false,volume:70});
+  assert.equal(sources.at(-1).stopped,true);
+  sound.update(state);
+  assert.equal(sources.filter(s=>s.loop).length,2);
+  sound.configure({sound:true,volume:70});
+  sound.update(state);
+  sound.update({...state,phase:'home'});
+  assert.equal(sources.at(-1).stopped,true);
+});

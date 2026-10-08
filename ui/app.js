@@ -1,9 +1,9 @@
-import { evaluateResult, eligibleForLeaderboard, createRecord, validNickname } from '../core/results.js?v=0.9.0';
-import { LocalStore } from '../storage/local.js?v=0.9.0';
-import { Sound } from '../effects/sound.js?v=0.9.0';
-import { ACTIONS, DIFFICULTIES } from '../data/rules.js?v=0.9.0';
-import { Battle } from '../core/battle.js?v=0.9.0';
-import { Scene } from '../effects/scene.js?v=0.9.0';
+import { evaluateResult, eligibleForLeaderboard, createRecord, validNickname } from '../core/results.js?v=0.9.1';
+import { LocalStore } from '../storage/local.js?v=0.9.1';
+import { Sound } from '../effects/sound.js?v=0.9.1';
+import { ACTIONS, DIFFICULTIES } from '../data/rules.js?v=0.9.1';
+import { Battle } from '../core/battle.js?v=0.9.1';
+import { Scene } from '../effects/scene.js?v=0.9.1';
 
 const $ = id => document.getElementById(id);
 const battle = new Battle();
@@ -140,7 +140,7 @@ function start(mode, difficulty = $('difficulty').value) {
 }
 function describeDifficulty() {
   const rule = DIFFICULTIES[$('difficulty').value];
-  $('difficulty-description').textContent = `選錯扣 ${rule.wrong} HP · 超時扣 ${rule.timeout} HP · 前四王過關回 ${rule.recovery} HP（上限 100）`;
+  $('difficulty-description').innerHTML = `<span>選錯扣 ${rule.wrong} HP · 超時扣 ${rule.timeout} HP</span><span>前四王過關回 ${rule.recovery} HP（上限 100）</span>`;
 }
 $('difficulty').addEventListener('change', describeDifficulty);
 describeDifficulty();
@@ -237,9 +237,10 @@ $('sound-enabled').addEventListener('change', changePreferences);
 $('reduced-effects').addEventListener('change', changePreferences);
 $('volume').addEventListener('input', changePreferences);
 $('test-sound').addEventListener('click', () => {
-  // unlock 不排隊播放；已啟用時直接試聽，失敗仍保留設定與遊戲。
-  void sound.unlock().then(refreshSettings);
-  sound.play('attack', 'PERFECT');
+  void sound.unlock().then(enabled => {
+    if (enabled && auxiliary === 'settings' && !document.hidden) sound.play('attack', 'PERFECT');
+    refreshSettings();
+  });
 });
 $('save-score').addEventListener('submit', event => {
   event.preventDefault();

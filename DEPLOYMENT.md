@@ -1,6 +1,6 @@
-# 0.9.0 發布與驗收
+# 0.9.1 發布與驗收
 
-目前尚未推送或發布。遠端 Pages 設定 API 回覆 Forbidden，無法確認是否啟用或其來源設定。
+0.9.0 已推送，使用者已確認可試玩。0.9.1 更新採 main 推送後自動測試與部署；本環境 GitHub API 與網站 HTTP 受限，須以 Actions 結果確認遠端更新。
 
 使用 Node.js 24、Python 3；`npm ci` 安裝鎖定的 Playwright 1.62.1 開發依賴。遊戲本身是靜態網站，不需要伺服器套件或執行期外部字體服務。
 
@@ -15,11 +15,11 @@ npm run validate:release
 
 ## GitHub Pages
 
-準備的 `.github/workflows/pages.yml` 在 PR 或手動執行時驗證 Chromium、Firefox、WebKit，測試實際產物的 `/boss-rush/` 路徑。三引擎成功後才產生 Pages artifact。此工作流程尚未在 GitHub 執行，跨引擎相容性仍待結果確認。
+準備的 `.github/workflows/pages.yml` 在 main 推送、PR 或手動執行時驗證 Chromium、Firefox、WebKit，測試實際產物的 `/boss-rush/` 路徑。三引擎成功後才產生 Pages artifact。此工作流程尚未在 GitHub 執行，跨引擎相容性仍待結果確認。
 
-經使用者授權推送後，在儲存庫 Settings → Pages 將 Source 設為 GitHub Actions。先手動執行工作流程並保持 `publish=false`，確認全部檢查。明確授權部署後，在 main 手動執行且勾選 `publish=true`。只有該條件允許部署，PR 不會發布。預期網站路徑為 `https://franksky1207.github.io/boss-rush/`，目前沒有確認此網址已提供新版。
+經使用者授權推送後，在儲存庫 Settings → Pages 將 Source 設為 GitHub Actions。main 推送後通過全部檢查即自動部署；也可在 main 手動執行且勾選 `publish=true`。手動不勾選時只驗證，PR 不會發布。預期網站路徑為 `https://franksky1207.github.io/boss-rush/`，目前沒有確認此網址已提供新版。
 
-部署後以實體手機／桌機核對三難度、五王、字體與素材載入、旋轉／背景暫停、排行榜重載、音效及降低特效。另確認 Network 沒有 404、載入版本為 0.9.0。
+部署後以實體手機／桌機核對三難度、五王、字體與素材載入、旋轉／背景暫停、排行榜重載、音效及降低特效。另確認 Network 沒有 404、載入版本為 0.9.1。
 
 ## 雲端浏览器驗收
 

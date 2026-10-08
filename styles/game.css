@@ -18,6 +18,17 @@ p { line-height: 1.65; }
 .lead { font-size: 21px; }
 .note { font-size: 13px; color: #adb9c5; }
 .mode-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 24px; }
+#difficulty-description span + span::before { content: ' · '; }
+.home-features span + span::before { content: ' · '; }
+@media (orientation: portrait) and (max-width: 600px) {
+  .home { padding: 24px 18px; }
+  .home-instructions span { display: block; }
+  .home .mode-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .home .mode-buttons button { padding: 14px 8px; white-space: nowrap; }
+  #difficulty-description span, .home-features span { display: block; }
+  #difficulty-description span + span::before, .home-features span + span::before { content: none; }
+  .home-features br { display: none; }
+}
 .battle { width: min(1440px, 100%); height: 100%; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 12px; user-select: none; }
 .hud { display: grid; grid-template-columns: minmax(200px, 1fr) repeat(4, auto); align-items: center; gap: clamp(8px, 1.5vw, 24px); padding: 12px 18px; background: #18212b; border: 1px solid #394c5d; border-radius: 10px; }
 .health-label { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 5px; }
@@ -180,7 +191,7 @@ input[type="range"] { width: 100%; min-height: 48px; cursor: pointer; }
 .fighter[data-prototype="false"][data-asset="ready"] .weapon, .fighter[data-prototype="false"][data-asset="ready"] .actor-shield { display: none; }
 
 /* 本機字體與呈現特效；全部動態值來自 Scene 的同一遊戲時計。 */
-@font-face { font-family: "Rush Serif TC"; src: url('../assets/fonts/noto-serif-tc-game.woff?v=0.9.0') format('woff'); font-style: normal; font-weight: 200 900; font-display: swap; }
+@font-face { font-family: "Rush Serif TC"; src: url('../assets/fonts/noto-serif-tc-game.woff?v=0.9.1') format('woff'); font-style: normal; font-weight: 200 900; font-display: swap; }
 :root { --display-font: "Rush Serif TC", "Noto Serif TC", "Songti TC", serif; --gold: #f3d99a; --ice: #bde9ff; }
 body { letter-spacing: .015em; -webkit-font-smoothing: antialiased; }
 h1, h2, .actor-label, .actions button { font-family: var(--display-font); font-weight: 700; }

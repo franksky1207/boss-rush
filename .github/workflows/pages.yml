@@ -1,6 +1,8 @@
 name: Validate and prepare GitHub Pages
 
 on:
+  push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
     inputs:
@@ -48,6 +50,7 @@ jobs:
       - run: npm run test:browser
       - run: npm run test:bosses
       - run: npm run test:presentation
+      - run: node tests/home-audio-browser.mjs
       - run: node tests/difficulty-browser.mjs
       - run: node tests/lifecycle-browser.mjs
       - run: node tests/visual-browser.mjs
@@ -72,7 +75,7 @@ jobs:
           path: dist/boss-rush
 
   deploy:
-    if: github.event_name == 'workflow_dispatch' && inputs.publish && github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.publish))
     needs: build
     runs-on: ubuntu-latest
     permissions:

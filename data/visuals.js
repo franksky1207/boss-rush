@@ -4,7 +4,7 @@ const character = (id, heightRatio, metadata) => Object.freeze({
   canvas: Object.freeze(metadata.canvas), visibleBounds: Object.freeze(metadata.visibleBounds), anchor: Object.freeze(metadata.anchor),
   poseMetadata: Object.freeze(Object.fromEntries(Object.entries(metadata.poses).map(([pose, art]) => [pose, Object.freeze({ anchor: Object.freeze(art.anchor) })]))),
   poses: Object.freeze(Object.fromEntries(['idle','attack','defend','hurt'].map(pose => [pose,
-    new URL(`../assets/characters/${id}/${pose === 'attack' ? 'attack' : 'idle'}.webp?v=0.9.0`, import.meta.url).href]))),
+    new URL(`../assets/characters/${id}/${pose === 'attack' ? 'attack' : 'idle'}.webp?v=0.9.1`, import.meta.url).href]))),
 });
 export const HERO_VISUAL = Object.freeze({
   id: 'silver-knight', prototype: false, heightRatio: 1, facing: 'right',
@@ -15,7 +15,7 @@ export const HERO_VISUAL = Object.freeze({
   poseMetadata: Object.freeze(Object.fromEntries(Object.entries({ idle: 1464, attack: 1461, defend: 1473, hurt: 1432 })
     .map(([pose, foot]) => [pose, Object.freeze({ anchor: Object.freeze({ x: 0.5, y: foot / 1536 }) })]))),
   poses: Object.freeze(Object.fromEntries(['idle', 'attack', 'defend', 'hurt'].map(pose =>
-    [pose, new URL(`../assets/characters/silver-knight/${pose}.webp?v=0.9.0`, import.meta.url).href]))),
+    [pose, new URL(`../assets/characters/silver-knight/${pose}.webp?v=0.9.1`, import.meta.url).href]))),
 });
 export const BOSS_VISUALS = Object.freeze([
   character('iron-guard', 1.5, {
@@ -245,4 +245,4 @@ export const ARENA_VISUALS = Object.freeze([
   ['ruined-arena', '破敗競技場'], ['moonlit-ruins', '月夜廢墟'], ['lava-fortress', '熔岩堡壘'],
   ['void-temple', '虛空神殿'], ['terminal-throne', '終末王座'],
 ].map(([id, name]) => Object.freeze({ id, name, prototype: false,
-  src: new URL(`../assets/backgrounds/${id}.webp?v=0.9.0`, import.meta.url).href })));
+  src: new URL(`../assets/backgrounds/${id}.webp?v=0.9.1`, import.meta.url).href })));
