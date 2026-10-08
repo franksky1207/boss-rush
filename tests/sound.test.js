@@ -116,3 +116,28 @@ test('配樂單一循環、音效不中斷；暫停／靜音／返家停止，�
   sound.update({...state,phase:'home'});
   assert.equal(sources.at(-1).stopped,true);
 });
+
+test('手機媒體輸出在手勢內同時啟動，拒絕播放可重試，不繞回無聲的直連路徑', async () => {
+  const fake=audio(), stream={}, connections=[];
+  fake.context.createMediaStreamDestination=()=>({stream});
+  const createGain=fake.context.createGain;
+  fake.context.createGain=()=>{const gain=createGain();gain.connect=target=>connections.push(target);return gain;};
+  let denied=true, plays=0;
+  const output={paused:true,play(){plays++;if(denied)return Promise.reject(new Error('NotAllowedError'));this.paused=false;return Promise.resolve();}};
+  const sound=new Sound({createContext:()=>fake.context,createOutput:()=>output});
+  const first=sound.unlock();
+  assert.equal(plays,1);
+  assert.equal(fake.context.state,'running');
+  assert.equal(output.srcObject,stream);
+  assert.equal(connections.includes(fake.context.destination),false);
+  assert.equal(await first,false);
+  assert.equal(sound.play('attack'),false);
+  denied=false;
+  assert.equal(await sound.unlock(),true);
+  assert.equal(plays,2);
+  assert.match(sound.status,/手機媒體輸出/);
+  assert.equal(sound.play('attack'),true);
+  output.paused=true;
+  assert.equal(await sound.unlock(),true);
+  assert.equal(plays,3);
+});

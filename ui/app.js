@@ -1,9 +1,9 @@
-import { evaluateResult, eligibleForLeaderboard, createRecord, validNickname } from '../core/results.js?v=0.9.1';
-import { LocalStore } from '../storage/local.js?v=0.9.1';
-import { Sound } from '../effects/sound.js?v=0.9.1';
-import { ACTIONS, DIFFICULTIES } from '../data/rules.js?v=0.9.1';
-import { Battle } from '../core/battle.js?v=0.9.1';
-import { Scene } from '../effects/scene.js?v=0.9.1';
+import { evaluateResult, eligibleForLeaderboard, createRecord, validNickname } from '../core/results.js?v=0.9.2';
+import { LocalStore } from '../storage/local.js?v=0.9.2';
+import { Sound } from '../effects/sound.js?v=0.9.2';
+import { ACTIONS, DIFFICULTIES } from '../data/rules.js?v=0.9.2';
+import { Battle } from '../core/battle.js?v=0.9.2';
+import { Scene } from '../effects/scene.js?v=0.9.2';
 
 const $ = id => document.getElementById(id);
 const battle = new Battle();
@@ -172,7 +172,7 @@ function refreshSettings() {
   $('reduced-effects').checked = preferences.reducedEffects;
   $('settings-status').textContent = store.preferenceError
     ? '設定已套用，但無法儲存於本機；重新整理後可能恢復預設。'
-    : sound.unavailable ? '目前無法啟用音效，仍可正常遊玩。' : '設定自動儲存於這台裝置。';
+    : `${sound.status} 設定自動儲存於這台裝置。`;
 }
 
 function refreshBoard() {

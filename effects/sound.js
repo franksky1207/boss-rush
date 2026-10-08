@@ -8,6 +8,9 @@ const NOTES = Object.freeze({
 
 export class Sound {
   #createContext;
+  #createOutput;
+  #output = null;
+  #destination = null;
   #context = null;
   #master = null;
   #voices = new Set();
@@ -22,8 +25,27 @@ export class Sound {
   constructor({ createContext = () => {
     const Context = globalThis.AudioContext ?? globalThis.webkitAudioContext;
     if (!Context) throw new Error('瀏覽器不支援音效');
+    // Safari 17+ 支援媒體播放 audio session；舊版本使用下方媒體輸出橋接。
+    try { if (globalThis.navigator?.audioSession) globalThis.navigator.audioSession.type = 'playback'; } catch { /* 舊 Safari 繼續使用媒體輸出。 */ }
     return new Context();
-  } } = {}) { this.#createContext = createContext; }
+  }, createOutput = () => {
+    const nav = globalThis.navigator;
+    const ios = /iPhone|iPad|iPod/.test(nav?.userAgent ?? '') || (nav?.platform === 'MacIntel' && nav.maxTouchPoints > 1);
+    if (!ios || !globalThis.Audio) return null;
+    const output = new Audio();
+    output.setAttribute('playsinline', '');
+    output.preload = 'auto';
+    return output;
+  } } = {}) { this.#createContext = createContext; this.#createOutput = createOutput; }
+
+  get status() {
+    if (!this.#settings.sound || !this.#settings.volume) return '音效與配樂目前關閉或音量為 0。';
+    if (this.unavailable) return '音訊啟動失敗，請再次按「試聽音效」。';
+    if (!this.#context) return '按「試聽音效」啟動聲音。';
+    return this.#context.state === 'running' && (!this.#output || !this.#output.paused)
+      ? `音訊已啟動（${this.#output ? '手機媒體輸出' : 'Web Audio'}）。`
+      : '音訊尚未啟動，請按「試聽音效」。';
+  }
 
   configure(settings) {
     this.#settings = { sound: settings.sound, volume: settings.volume };
@@ -39,7 +61,12 @@ export class Sound {
         this.#context = this.#createContext();
         this.#musicBuffer = null;
         this.#master = this.#context.createGain();
-        this.#master.connect(this.#context.destination);
+        this.#output = this.#createOutput();
+        if (this.#output) {
+          this.#destination = this.#context.createMediaStreamDestination();
+          this.#master.connect(this.#destination);
+          this.#output.srcObject = this.#destination.stream;
+        } else this.#master.connect(this.#context.destination);
         this.configure(this.#settings);
         // iOS 的首次使用者手勢同時啟動極短音源，協助解鎖輸出。
         if (this.#context.createBufferSource) {
@@ -50,10 +77,13 @@ export class Sound {
           source.start();
         }
       }
-      if (this.#context.state === 'running') { this.unavailable = false; return Promise.resolve(true); }
+      if (this.#context.state === 'running' && (!this.#output || !this.#output.paused)) { this.unavailable = false; return Promise.resolve(true); }
       if (!this.#unlocking) {
-        this.#unlocking = Promise.resolve(this.#context.resume())
-          .then(() => { this.unavailable = this.#context.state !== 'running'; return !this.unavailable; })
+        // resume 與媒體 play 都必須直接在使用者手勢內呼叫，不能等另一個 Promise 完成。
+        const resumed = this.#context.resume();
+        const playing = this.#output?.play();
+        this.#unlocking = Promise.all([resumed, playing])
+          .then(() => { this.unavailable = this.#context.state !== 'running' || Boolean(this.#output?.paused); return !this.unavailable; })
           .catch(() => { this.unavailable = true; return false; })
           .finally(() => { this.#unlocking = null; });
       }
@@ -62,7 +92,7 @@ export class Sound {
   }
 
   play(...names) {
-    if (!this.#settings.sound || this.#settings.volume === 0 || this.#context?.state !== 'running') return false;
+    if (!this.#settings.sound || this.#settings.volume === 0 || this.#context?.state !== 'running' || this.#output?.paused) return false;
     this.#stopEffects();
     try {
       const notes = names.flatMap(name => NOTES[name] ?? []).slice(0, 6);
