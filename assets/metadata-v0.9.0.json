@@ -1,0 +1,476 @@
+[
+  {
+    "id": "iron-guard",
+    "prototype": false,
+    "heightRatio": 1.5,
+    "facing": "left",
+    "mirror": false,
+    "canvas": {
+      "width": 1024,
+      "height": 1536
+    },
+    "visibleBounds": {
+      "x": 0,
+      "y": 12,
+      "width": 1024,
+      "height": 1501
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 0.9596354166666666
+    },
+    "safeMargin": 0.01,
+    "theme": "iron",
+    "weapon": "axe",
+    "floating": 0,
+    "poses": {
+      "idle": {
+        "file": "idle.webp",
+        "canvas": {
+          "width": 1024,
+          "height": 1536
+        },
+        "alphaBounds": [
+          24,
+          65,
+          1007,
+          1474
+        ],
+        "anchor": {
+          "x": 0.5,
+          "y": 0.9596354166666666
+        },
+        "bytes": 368736,
+        "source": "/workspace/generated_images/exec-5b2ad9e6-c0d2-4ad2-a562-eeb9d4104f7c.png",
+        "sha256": "4683929593026ad2e77b1c8a36ddf51d82a6ba359da33c8924afd6029ce03976"
+      },
+      "attack": {
+        "file": "attack.webp",
+        "canvas": {
+          "width": 1024,
+          "height": 1536
+        },
+        "alphaBounds": [
+          74,
+          12,
+          1010,
+          1513
+        ],
+        "anchor": {
+          "x": 0.5,
+          "y": 0.9850260416666666
+        },
+        "bytes": 316244,
+        "source": "/workspace/generated_images/exec-7b95e9d3-4b23-423a-ac19-d7e075df2bac.png",
+        "sha256": "44813f15c33bcdf816e5b89aa28be6cc7a30afd692979d8d5e7928709e1ef5c9"
+      }
+    },
+    "source": "Original OpenAI-generated game art; image generation from character reference",
+    "review": "已製作／整合，美術與實機確認待驗收"
+  },
+  {
+    "id": "shadow-assassin",
+    "prototype": false,
+    "heightRatio": 0.95,
+    "facing": "left",
+    "mirror": false,
+    "canvas": {
+      "width": 1024,
+      "height": 1536
+    },
+    "visibleBounds": {
+      "x": 0,
+      "y": 72,
+      "width": 1024,
+      "height": 1398
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 0.95703125
+    },
+    "safeMargin": 0.01,
+    "theme": "shadow",
+    "weapon": "daggers",
+    "floating": 0,
+    "poses": {
+      "idle": {
+        "file": "idle.webp",
+        "canvas": {
+          "width": 1024,
+          "height": 1536
+        },
+        "alphaBounds": [
+          62,
+          72,
+          985,
+          1470
+        ],
+        "anchor": {
+          "x": 0.5,
+          "y": 0.95703125
+        },
+        "bytes": 291358,
+        "source": "/workspace/generated_images/exec-797dedc0-313f-46de-8129-3f61103ad0ee.png",
+        "sha256": "6fef6d8e44869716dc8946eb64c7fe009b520d98769ff4a889625544393557ef"
+      },
+      "attack": {
+        "file": "attack.webp",
+        "canvas": {
+          "width": 1024,
+          "height": 1536
+        },
+        "alphaBounds": [
+          16,
+          92,
+          1008,
+          1463
+        ],
+        "anchor": {
+          "x": 0.5,
+          "y": 0.9524739583333334
+        },
+        "bytes": 262198,
+        "source": "/workspace/generated_images/exec-adc0da63-f7ec-40c6-85ba-d8ffe0f9df05.png",
+        "sha256": "595d851e5d0be45d6f45b8b43bbf7f323dbb92dbecc95d0040112d6e33826ed7"
+      }
+    },
+    "source": "Original OpenAI-generated game art; image generation from character reference",
+    "review": "已製作／整合，美術與實機確認待驗收"
+  },
+  {
+    "id": "flame-general",
+    "prototype": false,
+    "heightRatio": 1.25,
+    "facing": "left",
+    "mirror": false,
+    "canvas": {
+      "width": 1024,
+      "height": 1536
+    },
+    "visibleBounds": {
+      "x": 0,
+      "y": 12,
+      "width": 1024,
+      "height": 1498
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 0.9830729166666666
+    },
+    "safeMargin": 0.01,
+    "theme": "flame",
+    "weapon": "greatsword",
+    "floating": 0,
+    "poses": {
+      "idle": {
+        "file": "idle.webp",
+        "canvas": {
+          "width": 1024,
+          "height": 1536
+        },
+        "alphaBounds": [
+          18,
+          12,
+          1019,
+          1510
+        ],
+        "anchor": {
+          "x": 0.5,
+          "y": 0.9830729166666666
+        },
+        "bytes": 403696,
+        "source": "/workspace/generated_images/exec-82455484-3e29-4be5-8f4d-80bf2c19fd6d.png",
+        "sha256": "dd4fbc841f8fd4b13d3d8190a2e1dc3bd5e5324bc5042bb81c33ea6ce958ccea"
+      },
+      "attack": {
+        "file": "attack.webp",
+        "canvas": {
+          "width": 1024,
+          "height": 1536
+        },
+        "alphaBounds": [
+          47,
+          27,
+          1006,
+          1474
+        ],
+        "anchor": {
+          "x": 0.5,
+          "y": 0.9596354166666666
+        },
+        "bytes": 337278,
+        "source": "/workspace/generated_images/exec-f32c9992-dcaa-4748-8786-a5bbd679a286.png",
+        "sha256": "5c2170b618a631f3cf6a5b0fb92c09d3ba65ee4f2feebb02f7c098f1787cec7b"
+      }
+    },
+    "source": "Original OpenAI-generated game art; image generation from character reference",
+    "review": "已製作／整合，美術與實機確認待驗收"
+  },
+  {
+    "id": "void-lord",
+    "prototype": false,
+    "heightRatio": 1.35,
+    "facing": "left",
+    "mirror": true,
+    "canvas": {
+      "width": 1024,
+      "height": 1536
+    },
+    "visibleBounds": {
+      "x": 0,
+      "y": 19,
+      "width": 1024,
+      "height": 1490
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 0.982421875
+    },
+    "safeMargin": 0.01,
+    "theme": "void",
+    "weapon": "staff",
+    "floating": 0.08,
+    "poses": {
+      "idle": {
+        "file": "idle.webp",
+        "canvas": {
+          "width": 1024,
+          "height": 1536
+        },
+        "alphaBounds": [
+          63,
+          19,
+          1004,
+          1509
+        ],
+        "anchor": {
+          "x": 0.5,
+          "y": 0.982421875
+        },
+        "bytes": 351696,
+        "source": "/workspace/generated_images/exec-1040e8a5-dd13-4e40-948c-05a73c3eb08c.png",
+        "sha256": "3e64494a6fe9c32e223b7e430c924ee54392932a33e27e0df8a8ba264af36d2f"
+      },
+      "attack": {
+        "file": "attack.webp",
+        "canvas": {
+          "width": 1024,
+          "height": 1536
+        },
+        "alphaBounds": [
+          28,
+          47,
+          1013,
+          1495
+        ],
+        "anchor": {
+          "x": 0.5,
+          "y": 0.9733072916666666
+        },
+        "bytes": 394990,
+        "source": "/workspace/generated_images/exec-70cd6aca-85f5-436d-8235-2454c59ab19e.png",
+        "sha256": "7870556a644900bcade224222f0a9d7a68ded24090150ee390227003b1f19ed0"
+      }
+    },
+    "source": "Original OpenAI-generated game art; image generation from character reference",
+    "review": "已製作／整合，美術與實機確認待驗收"
+  },
+  {
+    "id": "final-overlord",
+    "prototype": false,
+    "heightRatio": 1.7,
+    "facing": "left",
+    "mirror": true,
+    "canvas": {
+      "width": 1024,
+      "height": 1536
+    },
+    "visibleBounds": {
+      "x": 0,
+      "y": 12,
+      "width": 1024,
+      "height": 1492
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 0.9791666666666666
+    },
+    "safeMargin": 0.01,
+    "theme": "final",
+    "weapon": "greatsword",
+    "floating": 0,
+    "poses": {
+      "idle": {
+        "file": "idle.webp",
+        "canvas": {
+          "width": 1024,
+          "height": 1536
+        },
+        "alphaBounds": [
+          42,
+          12,
+          1007,
+          1504
+        ],
+        "anchor": {
+          "x": 0.5,
+          "y": 0.9791666666666666
+        },
+        "bytes": 344032,
+        "source": "/workspace/generated_images/exec-78f5ab7b-e8a0-4290-8187-029831e73a5b.png",
+        "sha256": "eff4a6d0a36d2c1780de018381dfc8436a0c41c5b31943fcd56d0bebffe8e590"
+      },
+      "attack": {
+        "file": "attack.webp",
+        "canvas": {
+          "width": 1024,
+          "height": 1536
+        },
+        "alphaBounds": [
+          17,
+          12,
+          1014,
+          1499
+        ],
+        "anchor": {
+          "x": 0.5,
+          "y": 0.9759114583333334
+        },
+        "bytes": 315168,
+        "source": "/workspace/generated_images/exec-01093493-cebb-4306-8802-8590977ac4d1.png",
+        "sha256": "e23d274cde6e38fff9ceb4f3cc1d78f07d714056dcebc6917b874a391e07b1f9"
+      }
+    },
+    "source": "Original OpenAI-generated game art; image generation from character reference",
+    "review": "已製作／整合，美術與實機確認待驗收"
+  },
+  {
+    "id": "final-overlord-berserk",
+    "prototype": false,
+    "heightRatio": 1.7,
+    "facing": "left",
+    "mirror": true,
+    "canvas": {
+      "width": 1024,
+      "height": 1536
+    },
+    "visibleBounds": {
+      "x": 0,
+      "y": 11,
+      "width": 1024,
+      "height": 1507
+    },
+    "anchor": {
+      "x": 0.5,
+      "y": 0.9830729166666666
+    },
+    "safeMargin": 0.01,
+    "theme": "berserk",
+    "weapon": "greatsword",
+    "floating": 0,
+    "poses": {
+      "idle": {
+        "file": "idle.webp",
+        "canvas": {
+          "width": 1024,
+          "height": 1536
+        },
+        "alphaBounds": [
+          21,
+          11,
+          1001,
+          1510
+        ],
+        "anchor": {
+          "x": 0.5,
+          "y": 0.9830729166666666
+        },
+        "bytes": 363974,
+        "source": "/workspace/generated_images/exec-3a0bbc4f-173c-46f3-83f3-d2c37113c04e.png",
+        "sha256": "31dea5ce47ecfb2b5fb404ce745b49e7ceec340e6c30b8fe20689cd9c48f2be3"
+      },
+      "attack": {
+        "file": "attack.webp",
+        "canvas": {
+          "width": 1024,
+          "height": 1536
+        },
+        "alphaBounds": [
+          17,
+          11,
+          1020,
+          1518
+        ],
+        "anchor": {
+          "x": 0.5,
+          "y": 0.98828125
+        },
+        "bytes": 372284,
+        "source": "/workspace/generated_images/exec-36281a9e-8bf6-4384-a17b-94c1a262c44c.png",
+        "sha256": "ff6ea3453950eea38678a6797de3b09b810c757992b4431e9292a7135ba46f96"
+      }
+    },
+    "source": "Original OpenAI-generated game art; image generation from character reference",
+    "review": "已製作／整合，美術與實機確認待驗收"
+  },
+  {
+    "id": "ruined-arena",
+    "kind": "background",
+    "file": "assets/backgrounds/ruined-arena.webp",
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "bytes": 294112,
+    "source": "/workspace/generated_images/exec-9cf7ab41-362a-4d51-98c7-85f6d0e3dbec.png",
+    "sha256": "93f6975d4a1c5b92d52d06d373cc0e48941c65aa8ec7b5b09ae20a62ac8dea87"
+  },
+  {
+    "id": "moonlit-ruins",
+    "kind": "background",
+    "file": "assets/backgrounds/moonlit-ruins.webp",
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "bytes": 202202,
+    "source": "/workspace/generated_images/exec-ab7953a9-21f4-43c7-9931-326780532719.png",
+    "sha256": "5c5128e5dd8a33a4ecf8923cde17da00b786438f7ef2e3f7644963cbf9d82d2e"
+  },
+  {
+    "id": "lava-fortress",
+    "kind": "background",
+    "file": "assets/backgrounds/lava-fortress.webp",
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "bytes": 265366,
+    "source": "/workspace/generated_images/exec-f59cdfe7-bafc-4bc1-bb44-103f5b6912a6.png",
+    "sha256": "9dcf113ba4f899cc298fd422cc2c6cbb5ceab924df34a0444da84de303dce35b"
+  },
+  {
+    "id": "void-temple",
+    "kind": "background",
+    "file": "assets/backgrounds/void-temple.webp",
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "bytes": 207802,
+    "source": "/workspace/generated_images/exec-b1b0f9e4-f039-4a1f-8a7b-d78de33a525b.png",
+    "sha256": "8dabfc07732d07ba9942ba9edf0dc7d97fd12588cbab87381f476c4c23d04660"
+  },
+  {
+    "id": "terminal-throne",
+    "kind": "background",
+    "file": "assets/backgrounds/terminal-throne.webp",
+    "canvas": {
+      "width": 1672,
+      "height": 941
+    },
+    "bytes": 242132,
+    "source": "/workspace/generated_images/exec-e7e45dfb-3aaf-4e57-8b4a-f5e08b714138.png",
+    "sha256": "f63bede29bc15d0e8b5e36cc641f95ac4dcd7fa9ec0a54afbeb3de672ce32064"
+  }
+]

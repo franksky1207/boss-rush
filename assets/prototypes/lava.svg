@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <title>熔岩堡壘：幾何占位背景，非正式美術</title>
+  <path fill="#33252b" d="M0 0H1920V1080H0Z"/>
+  <g fill="#402d30" stroke="#95624b" stroke-width="6"><path d="M70 810V200H320V810ZM520 830V80H730V830ZM1180 830V80H1390V830ZM1580 810V200H1830V810Z"/></g>
+  <path d="M0 820 440 790 780 850 1160 805 1600 845 1920 795V1080H0Z" fill="#302a2b"/>
+  <g fill="none" stroke="#bf8156" stroke-width="12" opacity=".6"><path d="M0 940 400 870 780 985 1010 930 1350 980 1680 890 1920 945M690 850 660 910 730 970 670 1080M1380 840 1450 920 1420 1080"/></g>
+</svg>

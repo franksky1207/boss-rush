@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 240">
+  <title>虛空領主：幾何占位圖，非正式立繪</title>
+  <path d="M48 55 65 3 88 2 115 53 96 74 63 74Z" fill="#35324b" stroke="#b1a1d2" stroke-width="3"/>
+  <path d="M62 49 82 27 99 47 83 66Z" fill="#121b2a"/>
+  <path d="M69 49H94" stroke="#bdb4ed" stroke-width="4"/>
+  <path d="M61 74 99 74 119 111 132 237 104 224 82 238 61 222 28 237 46 111Z" fill="#2d2c45" stroke="#a393c4" stroke-width="3"/>
+  <path d="M60 77 82 121 101 78M81 123V218M47 115 25 160 8 154 36 89M113 114 138 158 153 152 127 91" fill="none" stroke="#837da5" stroke-width="7"/>
+  <path d="M79 87 94 112 80 136 66 112Z" fill="#ada4d9"/>
+  <g fill="#7b75a8"><path d="m53 177 7-8 7 8-7 8ZM101 184l7-8 7 8-7 8Z"/></g>
+</svg>

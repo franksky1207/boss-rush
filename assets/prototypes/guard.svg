@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 240">
+  <title>鐵甲守衛：幾何占位圖，非正式立繪</title>
+  <path d="M56 5 80 2 104 6 110 43 97 62 63 61 50 42Z" fill="#6b737c" stroke="#c2b8a6" stroke-width="3"/>
+  <path d="M55 28 104 28 103 40 57 40Z" fill="#1c242d"/>
+  <path d="M75 5 84 4 91 57 80 65 70 55Z" fill="#9e9586"/>
+  <path d="M34 72 61 60 100 60 129 72 112 148 49 148Z" fill="#474e57" stroke="#b8ad98" stroke-width="3"/>
+  <path d="M54 78 80 70 107 79 104 123 80 139 55 122Z" fill="#2d3642" stroke="#8e8577" stroke-width="3"/>
+  <path d="M31 71 8 85 12 119 47 119 56 83M127 70 151 85 149 119 112 118 105 83" fill="#77796f" stroke="#c3bba8" stroke-width="3"/>
+  <path d="M14 119 9 168 36 169 45 120M117 117 124 168 152 168 147 119" fill="#555f69" stroke="#c3bba8" stroke-width="3"/>
+  <path d="M49 144 78 146 73 208 42 209ZM83 146 111 144 119 207 89 208Z" fill="#535d69" stroke="#b3ac9a" stroke-width="3"/>
+  <path d="M42 203 73 204 73 236 25 238 26 223ZM89 204 119 203 135 225 136 238 88 238Z" fill="#343c46" stroke="#c3bba8" stroke-width="3"/>
+</svg>

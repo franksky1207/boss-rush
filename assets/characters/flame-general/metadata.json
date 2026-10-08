@@ -1,0 +1,69 @@
+{
+  "id": "flame-general",
+  "prototype": false,
+  "heightRatio": 1.25,
+  "facing": "left",
+  "mirror": false,
+  "canvas": {
+    "width": 1024,
+    "height": 1536
+  },
+  "visibleBounds": {
+    "x": 0,
+    "y": 12,
+    "width": 1024,
+    "height": 1498
+  },
+  "anchor": {
+    "x": 0.5,
+    "y": 0.9830729166666666
+  },
+  "safeMargin": 0.01,
+  "theme": "flame",
+  "weapon": "greatsword",
+  "floating": 0,
+  "poses": {
+    "idle": {
+      "file": "idle.webp",
+      "canvas": {
+        "width": 1024,
+        "height": 1536
+      },
+      "alphaBounds": [
+        18,
+        12,
+        1019,
+        1510
+      ],
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9830729166666666
+      },
+      "bytes": 403696,
+      "source": "/workspace/generated_images/exec-82455484-3e29-4be5-8f4d-80bf2c19fd6d.png",
+      "sha256": "dd4fbc841f8fd4b13d3d8190a2e1dc3bd5e5324bc5042bb81c33ea6ce958ccea"
+    },
+    "attack": {
+      "file": "attack.webp",
+      "canvas": {
+        "width": 1024,
+        "height": 1536
+      },
+      "alphaBounds": [
+        47,
+        27,
+        1006,
+        1474
+      ],
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9596354166666666
+      },
+      "bytes": 337278,
+      "source": "/workspace/generated_images/exec-f32c9992-dcaa-4748-8786-a5bbd679a286.png",
+      "sha256": "5c2170b618a631f3cf6a5b0fb92c09d3ba65ee4f2feebb02f7c098f1787cec7b"
+    }
+  },
+  "source": "Original OpenAI-generated game art; image generation from character reference",
+  "review": "已製作／整合，美術與實機確認待驗收"
+}

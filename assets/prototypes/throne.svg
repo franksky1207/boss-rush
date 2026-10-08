@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <title>終末王座：幾何占位背景，非正式美術</title>
+  <path fill="#261f28" d="M0 0H1920V1080H0Z"/>
+  <g fill="#332d32" stroke="#9a8059" stroke-width="6"><path d="M670 850V320L600 200 820 340 960 50 1100 340 1320 200 1250 320V850ZM130 870V310L260 100 390 310V870ZM1530 870V310L1660 100 1790 310V870Z"/><path d="M790 810V450L960 290 1130 450V810Z"/></g>
+  <path d="M0 850H1920V1080H0Z" fill="#211e25"/><g fill="none" stroke="#80694a" stroke-width="5" opacity=".6"><path d="M0 950H1920M0 1030H1920M480 850 280 1080M1440 850 1640 1080M960 850V1080"/></g>
+</svg>

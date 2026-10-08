@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <title>虛空神殿：幾何占位背景，非正式美術</title>
+  <path fill="#25243c" d="M0 0H1920V1080H0Z"/>
+  <g fill="none" stroke="#8b80ae" stroke-width="6" opacity=".6"><path d="M960 60 1600 450 960 810 320 450ZM960 220 1300 450 960 650 620 450Z"/><circle cx="960" cy="450" r="170"/><path d="M150 0V820M1770 0V820M400 0 430 370 340 450 430 540 400 820M1520 0 1490 370 1580 450 1490 540 1520 820"/></g>
+  <path d="M0 830H1920V1080H0Z" fill="#211f34"/><g fill="none" stroke="#7e719f" stroke-width="4" opacity=".5"><ellipse cx="960" cy="945" rx="810" ry="120"/><ellipse cx="960" cy="945" rx="430" ry="60"/><path d="M0 1000 610 900 960 980 1300 900 1920 1000"/></g>
+</svg>

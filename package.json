@@ -1,0 +1,23 @@
+{
+  "name": "boss-rush",
+  "version": "0.9.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "check": "node --check core/battle.js && node --check core/moves.js && node --check data/rules.js && node --check data/visuals.js && node --check effects/scene.js && node --check ui/app.js && node --check core/results.js && node --check storage/local.js && node --check effects/sound.js",
+    "start": "python3 -m http.server 8000 --bind 127.0.0.1",
+    "validate:static": "node tests/static-audit.mjs",
+    "simulate": "node tests/simulate.mjs",
+    "verify": "npm run check && npm test && npm run validate:static",
+    "simulate:difficulties": "node tests/simulate-difficulties.mjs",
+    "build": "node scripts/build.mjs",
+    "validate:release": "node scripts/check-release.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "test:bosses": "node tests/boss-browser.mjs",
+    "test:presentation": "node tests/presentation-browser.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

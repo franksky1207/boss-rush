@@ -1,0 +1,1487 @@
+{
+  "version": 1,
+  "gameVersion": "0.6.1",
+  "samplesPerProfile": 1000,
+  "totalSamples": 8000,
+  "seedStart": 20261008,
+  "rules": {
+    "bosses": [
+      {
+        "name": "鐵甲守衛",
+        "hp": 1050,
+        "limit": 4000
+      },
+      {
+        "name": "暗影刺客",
+        "hp": 1750,
+        "limit": 3500
+      },
+      {
+        "name": "烈焰魔將",
+        "hp": 3000,
+        "limit": 3000
+      },
+      {
+        "name": "虛空領主",
+        "hp": 3500,
+        "limit": 2500
+      },
+      {
+        "name": "終焉魔王",
+        "hp": 4800,
+        "limit": 2000
+      }
+    ],
+    "timing": {
+      "intro": 900,
+      "telegraph": 400,
+      "prepare": 700,
+      "defeat": 1500,
+      "miss": 600,
+      "berserk": 1000
+    },
+    "hp": {
+      "initial": 100,
+      "wrong": 15,
+      "timeout": 20,
+      "recovery": 30
+    }
+  },
+  "summaries": [
+    {
+      "profile": {
+        "id": "perfect",
+        "name": "全 PERFECT",
+        "kind": "fixed",
+        "fraction": 0.2
+      },
+      "samples": 1000,
+      "victories": 1000,
+      "deaths": 0,
+      "winRate": 100,
+      "deathByBoss": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "grades": {
+        "SSS": 1000
+      },
+      "observedAccuracy": 100,
+      "attempts": 49000,
+      "correct": 49000,
+      "wrong": 0,
+      "timeout": 0,
+      "victoriesInTarget": 0,
+      "victoryWallSeconds": {
+        "min": 127.35,
+        "p10": 127.75,
+        "median": 128.15,
+        "p90": 128.55,
+        "max": 129.15
+      },
+      "victoryBattleSeconds": {
+        "min": 114.35,
+        "p10": 114.75,
+        "median": 115.15,
+        "p90": 115.55,
+        "max": 116.15
+      },
+      "deathWallSeconds": null,
+      "victoryHitsByBoss": [
+        {
+          "min": 8,
+          "p10": 8,
+          "median": 8,
+          "p90": 8,
+          "max": 8
+        },
+        {
+          "min": 8,
+          "p10": 8,
+          "median": 8,
+          "p90": 8,
+          "max": 8
+        },
+        {
+          "min": 9,
+          "p10": 9,
+          "median": 9,
+          "p90": 9,
+          "max": 9
+        },
+        {
+          "min": 10,
+          "p10": 10,
+          "median": 10,
+          "p90": 10,
+          "max": 10
+        },
+        {
+          "min": 14,
+          "p10": 14,
+          "median": 14,
+          "p90": 14,
+          "max": 14
+        }
+      ],
+      "victoryTurns": {
+        "min": 49,
+        "p10": 49,
+        "median": 49,
+        "p90": 49,
+        "max": 49
+      },
+      "exampleVictory": {
+        "seed": 20261008,
+        "phase": "victory",
+        "boss": 5,
+        "hits": [
+          8,
+          8,
+          9,
+          10,
+          14
+        ],
+        "wrongs": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "timeouts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "turns": 49,
+        "wallMs": 127650,
+        "battleMs": 114650,
+        "tutorialMs": 0,
+        "pausedMs": 0,
+        "grade": "SSS",
+        "accuracy": 1,
+        "stats": {
+          "correct": 49,
+          "wrong": 0,
+          "timeout": 0,
+          "PERFECT": 49,
+          "GREAT": 0,
+          "GOOD": 0
+        },
+        "highestCombo": 49,
+        "playerHP": 100,
+        "berserkCount": 1,
+        "defeatedBosses": 5,
+        "moves": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "C01",
+          "C02",
+          "C03",
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "E01",
+          "E02",
+          "E03"
+        ]
+      },
+      "exampleDeath": null
+    },
+    {
+      "profile": {
+        "id": "great",
+        "name": "全 GREAT",
+        "kind": "fixed",
+        "fraction": 0.4
+      },
+      "samples": 1000,
+      "victories": 1000,
+      "deaths": 0,
+      "winRate": 100,
+      "deathByBoss": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "grades": {
+        "SS": 1000
+      },
+      "observedAccuracy": 100,
+      "attempts": 52000,
+      "correct": 52000,
+      "wrong": 0,
+      "timeout": 0,
+      "victoriesInTarget": 0,
+      "victoryWallSeconds": {
+        "min": 163.6,
+        "p10": 164.3,
+        "median": 164.7,
+        "p90": 165.1,
+        "max": 165.7
+      },
+      "victoryBattleSeconds": {
+        "min": 150.6,
+        "p10": 151.3,
+        "median": 151.7,
+        "p90": 152.1,
+        "max": 152.7
+      },
+      "deathWallSeconds": null,
+      "victoryHitsByBoss": [
+        {
+          "min": 8,
+          "p10": 8,
+          "median": 8,
+          "p90": 8,
+          "max": 8
+        },
+        {
+          "min": 8,
+          "p10": 8,
+          "median": 8,
+          "p90": 8,
+          "max": 8
+        },
+        {
+          "min": 10,
+          "p10": 10,
+          "median": 10,
+          "p90": 10,
+          "max": 10
+        },
+        {
+          "min": 11,
+          "p10": 11,
+          "median": 11,
+          "p90": 11,
+          "max": 11
+        },
+        {
+          "min": 15,
+          "p10": 15,
+          "median": 15,
+          "p90": 15,
+          "max": 15
+        }
+      ],
+      "victoryTurns": {
+        "min": 52,
+        "p10": 52,
+        "median": 52,
+        "p90": 52,
+        "max": 52
+      },
+      "exampleVictory": {
+        "seed": 20261008,
+        "phase": "victory",
+        "boss": 5,
+        "hits": [
+          8,
+          8,
+          10,
+          11,
+          15
+        ],
+        "wrongs": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "timeouts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "turns": 52,
+        "wallMs": 164200,
+        "battleMs": 151200,
+        "tutorialMs": 0,
+        "pausedMs": 0,
+        "grade": "SS",
+        "accuracy": 1,
+        "stats": {
+          "correct": 52,
+          "wrong": 0,
+          "timeout": 0,
+          "PERFECT": 0,
+          "GREAT": 52,
+          "GOOD": 0
+        },
+        "highestCombo": 52,
+        "playerHP": 100,
+        "berserkCount": 1,
+        "defeatedBosses": 5,
+        "moves": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "C01",
+          "C02",
+          "C03",
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "E01",
+          "E02",
+          "E03",
+          "E04"
+        ]
+      },
+      "exampleDeath": null
+    },
+    {
+      "profile": {
+        "id": "good",
+        "name": "全 GOOD",
+        "kind": "fixed",
+        "fraction": 0.8
+      },
+      "samples": 1000,
+      "victories": 1000,
+      "deaths": 0,
+      "winRate": 100,
+      "deathByBoss": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "grades": {
+        "SS": 1000
+      },
+      "observedAccuracy": 100,
+      "attempts": 56000,
+      "correct": 56000,
+      "wrong": 0,
+      "timeout": 0,
+      "victoriesInTarget": 1000,
+      "victoryWallSeconds": {
+        "min": 239.3,
+        "p10": 239.9,
+        "median": 240.3,
+        "p90": 240.7,
+        "max": 241.2
+      },
+      "victoryBattleSeconds": {
+        "min": 226.3,
+        "p10": 226.9,
+        "median": 227.3,
+        "p90": 227.7,
+        "max": 228.2
+      },
+      "deathWallSeconds": null,
+      "victoryHitsByBoss": [
+        {
+          "min": 9,
+          "p10": 9,
+          "median": 9,
+          "p90": 9,
+          "max": 9
+        },
+        {
+          "min": 8,
+          "p10": 8,
+          "median": 8,
+          "p90": 8,
+          "max": 8
+        },
+        {
+          "min": 11,
+          "p10": 11,
+          "median": 11,
+          "p90": 11,
+          "max": 11
+        },
+        {
+          "min": 12,
+          "p10": 12,
+          "median": 12,
+          "p90": 12,
+          "max": 12
+        },
+        {
+          "min": 16,
+          "p10": 16,
+          "median": 16,
+          "p90": 16,
+          "max": 16
+        }
+      ],
+      "victoryTurns": {
+        "min": 56,
+        "p10": 56,
+        "median": 56,
+        "p90": 56,
+        "max": 56
+      },
+      "exampleVictory": {
+        "seed": 20261008,
+        "phase": "victory",
+        "boss": 5,
+        "hits": [
+          9,
+          8,
+          11,
+          12,
+          16
+        ],
+        "wrongs": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "timeouts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "turns": 56,
+        "wallMs": 239800,
+        "battleMs": 226800,
+        "tutorialMs": 0,
+        "pausedMs": 0,
+        "grade": "SS",
+        "accuracy": 1,
+        "stats": {
+          "correct": 56,
+          "wrong": 0,
+          "timeout": 0,
+          "PERFECT": 0,
+          "GREAT": 0,
+          "GOOD": 56
+        },
+        "highestCombo": 56,
+        "playerHP": 100,
+        "berserkCount": 1,
+        "defeatedBosses": 5,
+        "moves": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "C01",
+          "C02",
+          "C03",
+          "C04",
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "E01",
+          "E02",
+          "E03",
+          "E04"
+        ]
+      },
+      "exampleDeath": null
+    },
+    {
+      "profile": {
+        "id": "accuracy97",
+        "name": "97% 正確率模型",
+        "kind": "independent",
+        "correct": 0.97,
+        "wrong": 0.02,
+        "perfect": 0.35,
+        "great": 0.5
+      },
+      "samples": 1000,
+      "victories": 998,
+      "deaths": 2,
+      "winRate": 99.8,
+      "deathByBoss": [
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "grades": {
+        "SS": 705,
+        "SSS": 161,
+        "S": 132,
+        "C": 2
+      },
+      "observedAccuracy": 97.09,
+      "attempts": 62680,
+      "correct": 60855,
+      "wrong": 1183,
+      "timeout": 642,
+      "victoriesInTarget": 589,
+      "victoryWallSeconds": {
+        "min": 145.11,
+        "p10": 156.98,
+        "median": 185.7,
+        "p90": 224.2,
+        "max": 280.4
+      },
+      "victoryBattleSeconds": {
+        "min": 132.11,
+        "p10": 143.98,
+        "median": 172.7,
+        "p90": 211.2,
+        "max": 267.4
+      },
+      "deathWallSeconds": {
+        "min": 151.24,
+        "p10": 151.24,
+        "median": 151.24,
+        "p90": 286.8,
+        "max": 286.8
+      },
+      "victoryHitsByBoss": [
+        {
+          "min": 8,
+          "p10": 8,
+          "median": 8,
+          "p90": 9,
+          "max": 10
+        },
+        {
+          "min": 8,
+          "p10": 8,
+          "median": 8,
+          "p90": 12,
+          "max": 14
+        },
+        {
+          "min": 9,
+          "p10": 10,
+          "median": 10,
+          "p90": 17,
+          "max": 22
+        },
+        {
+          "min": 10,
+          "p10": 11,
+          "median": 11,
+          "p90": 19,
+          "max": 26
+        },
+        {
+          "min": 14,
+          "p10": 15,
+          "median": 15,
+          "p90": 24,
+          "max": 32
+        }
+      ],
+      "victoryTurns": {
+        "min": 50,
+        "p10": 52,
+        "median": 61,
+        "p90": 74,
+        "max": 95
+      },
+      "exampleVictory": {
+        "seed": 20261008,
+        "phase": "victory",
+        "boss": 5,
+        "hits": [
+          9,
+          13,
+          15,
+          11,
+          15
+        ],
+        "wrongs": [
+          1,
+          2,
+          0,
+          0,
+          0
+        ],
+        "timeouts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "turns": 66,
+        "wallMs": 200751.1681585922,
+        "battleMs": 187751.1681585922,
+        "tutorialMs": 0,
+        "pausedMs": 0,
+        "grade": "SS",
+        "accuracy": 0.9545454545454546,
+        "stats": {
+          "correct": 63,
+          "wrong": 3,
+          "timeout": 0,
+          "PERFECT": 19,
+          "GREAT": 38,
+          "GOOD": 6
+        },
+        "highestCombo": 44,
+        "playerHP": 100,
+        "berserkCount": 1,
+        "defeatedBosses": 5,
+        "moves": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "C01",
+          "C02",
+          "C03",
+          "C04",
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "E01",
+          "E02",
+          "E03",
+          "E04"
+        ]
+      },
+      "exampleDeath": {
+        "seed": 20261101,
+        "phase": "dead",
+        "boss": 5,
+        "hits": [
+          8,
+          11,
+          19,
+          22,
+          28
+        ],
+        "wrongs": [
+          0,
+          1,
+          1,
+          2,
+          4
+        ],
+        "timeouts": [
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        "turns": 99,
+        "wallMs": 286801.2288169977,
+        "battleMs": 275298.2288169977,
+        "tutorialMs": 0,
+        "pausedMs": 0,
+        "grade": "C",
+        "accuracy": 0.8888888888888888,
+        "stats": {
+          "correct": 88,
+          "wrong": 8,
+          "timeout": 3,
+          "PERFECT": 34,
+          "GREAT": 41,
+          "GOOD": 13
+        },
+        "highestCombo": 18,
+        "playerHP": 0,
+        "berserkCount": 1,
+        "defeatedBosses": 4,
+        "moves": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "C01",
+          "C02",
+          "C03",
+          "C04",
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "E01",
+          "E02",
+          "E03",
+          "E04"
+        ]
+      }
+    },
+    {
+      "profile": {
+        "id": "accuracy90",
+        "name": "90% 正確率模型",
+        "kind": "independent",
+        "correct": 0.9,
+        "wrong": 0.07,
+        "perfect": 0.2,
+        "great": 0.5
+      },
+      "samples": 1000,
+      "victories": 643,
+      "deaths": 357,
+      "winRate": 64.3,
+      "deathByBoss": [
+        1,
+        11,
+        49,
+        104,
+        192
+      ],
+      "grades": {
+        "A": 97,
+        "C": 357,
+        "S": 460,
+        "SS": 86
+      },
+      "observedAccuracy": 90.14,
+      "attempts": 80596,
+      "correct": 72647,
+      "wrong": 5528,
+      "timeout": 2421,
+      "victoriesInTarget": 491,
+      "victoryWallSeconds": {
+        "min": 166.67,
+        "p10": 224.37,
+        "median": 276.16,
+        "p90": 317.47,
+        "max": 357.21
+      },
+      "victoryBattleSeconds": {
+        "min": 153.67,
+        "p10": 211.37,
+        "median": 263.16,
+        "p90": 304.46,
+        "max": 344.21
+      },
+      "deathWallSeconds": {
+        "min": 57.92,
+        "p10": 161.85,
+        "median": 251.63,
+        "p90": 311.01,
+        "max": 358.55
+      },
+      "victoryHitsByBoss": [
+        {
+          "min": 8,
+          "p10": 8,
+          "median": 8,
+          "p90": 10,
+          "max": 11
+        },
+        {
+          "min": 8,
+          "p10": 8,
+          "median": 11,
+          "p90": 14,
+          "max": 16
+        },
+        {
+          "min": 10,
+          "p10": 10,
+          "median": 17,
+          "p90": 21,
+          "max": 26
+        },
+        {
+          "min": 11,
+          "p10": 11,
+          "median": 18,
+          "p90": 24,
+          "max": 28
+        },
+        {
+          "min": 15,
+          "p10": 16,
+          "median": 24,
+          "p90": 32,
+          "max": 36
+        }
+      ],
+      "victoryTurns": {
+        "min": 52,
+        "p10": 69,
+        "median": 86,
+        "p90": 99,
+        "max": 110
+      },
+      "exampleVictory": {
+        "seed": 20261008,
+        "phase": "victory",
+        "boss": 5,
+        "hits": [
+          10,
+          10,
+          22,
+          17,
+          30
+        ],
+        "wrongs": [
+          2,
+          0,
+          2,
+          0,
+          4
+        ],
+        "timeouts": [
+          0,
+          1,
+          1,
+          0,
+          0
+        ],
+        "turns": 99,
+        "wallMs": 317516.3154517142,
+        "battleMs": 304514.3154517142,
+        "tutorialMs": 0,
+        "pausedMs": 0,
+        "grade": "A",
+        "accuracy": 0.898989898989899,
+        "stats": {
+          "correct": 89,
+          "wrong": 8,
+          "timeout": 2,
+          "PERFECT": 14,
+          "GREAT": 50,
+          "GOOD": 25
+        },
+        "highestCombo": 23,
+        "playerHP": 40,
+        "berserkCount": 1,
+        "defeatedBosses": 5,
+        "moves": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "C01",
+          "C02",
+          "C03",
+          "C04",
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "E01",
+          "E02",
+          "E03",
+          "E04"
+        ]
+      },
+      "exampleDeath": {
+        "seed": 20261009,
+        "phase": "dead",
+        "boss": 5,
+        "hits": [
+          8,
+          11,
+          22,
+          25,
+          21
+        ],
+        "wrongs": [
+          0,
+          1,
+          4,
+          4,
+          2
+        ],
+        "timeouts": [
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "turns": 99,
+        "wallMs": 306205.7477966966,
+        "battleMs": 294704.7477966966,
+        "tutorialMs": 0,
+        "pausedMs": 0,
+        "grade": "C",
+        "accuracy": 0.8787878787878788,
+        "stats": {
+          "correct": 87,
+          "wrong": 11,
+          "timeout": 1,
+          "PERFECT": 20,
+          "GREAT": 45,
+          "GOOD": 22
+        },
+        "highestCombo": 12,
+        "playerHP": 0,
+        "berserkCount": 1,
+        "defeatedBosses": 4,
+        "moves": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "C01",
+          "C03",
+          "C04",
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "E01",
+          "E02",
+          "E04"
+        ]
+      }
+    },
+    {
+      "profile": {
+        "id": "accuracy80",
+        "name": "80% 正確率模型",
+        "kind": "independent",
+        "correct": 0.8,
+        "wrong": 0.15,
+        "perfect": 0.1,
+        "great": 0.35
+      },
+      "samples": 1000,
+      "victories": 11,
+      "deaths": 989,
+      "winRate": 1.1,
+      "deathByBoss": [
+        31,
+        213,
+        448,
+        225,
+        72
+      ],
+      "grades": {
+        "A": 7,
+        "C": 989,
+        "S": 4
+      },
+      "observedAccuracy": 80.28,
+      "attempts": 48393,
+      "correct": 38848,
+      "wrong": 7192,
+      "timeout": 2353,
+      "victoriesInTarget": 3,
+      "victoryWallSeconds": {
+        "min": 276.83,
+        "p10": 291.33,
+        "median": 326.39,
+        "p90": 375.73,
+        "max": 382.61
+      },
+      "victoryBattleSeconds": {
+        "min": 263.83,
+        "p10": 278.33,
+        "median": 313.39,
+        "p90": 362.73,
+        "max": 369.61
+      },
+      "deathWallSeconds": {
+        "min": 37.02,
+        "p10": 105.46,
+        "median": 177.31,
+        "p90": 266.98,
+        "max": 370.1
+      },
+      "victoryHitsByBoss": [
+        {
+          "min": 8,
+          "p10": 9,
+          "median": 10,
+          "p90": 10,
+          "max": 10
+        },
+        {
+          "min": 9,
+          "p10": 10,
+          "median": 13,
+          "p90": 14,
+          "max": 15
+        },
+        {
+          "min": 11,
+          "p10": 11,
+          "median": 17,
+          "p90": 20,
+          "max": 21
+        },
+        {
+          "min": 11,
+          "p10": 12,
+          "median": 17,
+          "p90": 23,
+          "max": 27
+        },
+        {
+          "min": 16,
+          "p10": 23,
+          "median": 28,
+          "p90": 32,
+          "max": 33
+        }
+      ],
+      "victoryTurns": {
+        "min": 78,
+        "p10": 82,
+        "median": 94,
+        "p90": 108,
+        "max": 109
+      },
+      "exampleVictory": {
+        "seed": 20261008,
+        "phase": "victory",
+        "boss": 5,
+        "hits": [
+          10,
+          12,
+          17,
+          27,
+          29
+        ],
+        "wrongs": [
+          2,
+          1,
+          2,
+          5,
+          2
+        ],
+        "timeouts": [
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "turns": 108,
+        "wallMs": 375727.17579700425,
+        "battleMs": 362726.17579700425,
+        "tutorialMs": 0,
+        "pausedMs": 0,
+        "grade": "A",
+        "accuracy": 0.8796296296296297,
+        "stats": {
+          "correct": 95,
+          "wrong": 12,
+          "timeout": 1,
+          "PERFECT": 11,
+          "GREAT": 30,
+          "GOOD": 54
+        },
+        "highestCombo": 19,
+        "playerHP": 5,
+        "berserkCount": 1,
+        "defeatedBosses": 5,
+        "moves": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "C01",
+          "C02",
+          "C03",
+          "C04",
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "E01",
+          "E02",
+          "E03",
+          "E04"
+        ]
+      },
+      "exampleDeath": {
+        "seed": 20261009,
+        "phase": "dead",
+        "boss": 3,
+        "hits": [
+          9,
+          9,
+          10,
+          0,
+          0
+        ],
+        "wrongs": [
+          1,
+          0,
+          6,
+          0,
+          0
+        ],
+        "timeouts": [
+          0,
+          0,
+          1,
+          0,
+          0
+        ],
+        "turns": 36,
+        "wallMs": 135117.63714443333,
+        "battleMs": 129416.63714443333,
+        "tutorialMs": 0,
+        "pausedMs": 0,
+        "grade": "C",
+        "accuracy": 0.7777777777777778,
+        "stats": {
+          "correct": 28,
+          "wrong": 7,
+          "timeout": 1,
+          "PERFECT": 3,
+          "GREAT": 12,
+          "GOOD": 13
+        },
+        "highestCombo": 18,
+        "playerHP": 0,
+        "berserkCount": 0,
+        "defeatedBosses": 2,
+        "moves": [
+          "A01",
+          "A03",
+          "C01",
+          "C03",
+          "D01",
+          "D02",
+          "E01",
+          "E02"
+        ]
+      }
+    },
+    {
+      "profile": {
+        "id": "accuracy65",
+        "name": "65% 正確率模型",
+        "kind": "independent",
+        "correct": 0.65,
+        "wrong": 0.25,
+        "perfect": 0.05,
+        "great": 0.25
+      },
+      "samples": 1000,
+      "victories": 0,
+      "deaths": 1000,
+      "winRate": 0,
+      "deathByBoss": [
+        344,
+        557,
+        97,
+        2,
+        0
+      ],
+      "grades": {
+        "C": 1000
+      },
+      "observedAccuracy": 66.19,
+      "attempts": 22721,
+      "correct": 15038,
+      "wrong": 5556,
+      "timeout": 2127,
+      "victoriesInTarget": 0,
+      "victoryWallSeconds": null,
+      "victoryBattleSeconds": null,
+      "deathWallSeconds": {
+        "min": 35.09,
+        "p10": 55.67,
+        "median": 97.25,
+        "p90": 140.54,
+        "max": 222.54
+      },
+      "victoryHitsByBoss": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "victoryTurns": null,
+      "exampleVictory": null,
+      "exampleDeath": {
+        "seed": 20261008,
+        "phase": "dead",
+        "boss": 1,
+        "hits": [
+          6,
+          0,
+          0,
+          0,
+          0
+        ],
+        "wrongs": [
+          4,
+          0,
+          0,
+          0,
+          0
+        ],
+        "timeouts": [
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "turns": 12,
+        "wallMs": 50382.99474599585,
+        "battleMs": 49480.99474599585,
+        "tutorialMs": 0,
+        "pausedMs": 0,
+        "grade": "C",
+        "accuracy": 0.5,
+        "stats": {
+          "correct": 6,
+          "wrong": 4,
+          "timeout": 2,
+          "PERFECT": 2,
+          "GREAT": 2,
+          "GOOD": 2
+        },
+        "highestCombo": 3,
+        "playerHP": 0,
+        "berserkCount": 0,
+        "defeatedBosses": 0,
+        "moves": [
+          "A01",
+          "C01",
+          "D01",
+          "E01"
+        ]
+      }
+    },
+    {
+      "profile": {
+        "id": "clustered",
+        "name": "集中失誤模型",
+        "kind": "clustered",
+        "enterCold": 0.08,
+        "leaveCold": 0.45,
+        "coldError": 0.55,
+        "warmError": 0.02,
+        "wrongShare": 0.7,
+        "perfect": 0.2,
+        "great": 0.5
+      },
+      "samples": 1000,
+      "victories": 622,
+      "deaths": 378,
+      "winRate": 62.2,
+      "deathByBoss": [
+        8,
+        31,
+        83,
+        99,
+        157
+      ],
+      "grades": {
+        "SS": 157,
+        "A": 88,
+        "C": 378,
+        "S": 377
+      },
+      "observedAccuracy": 90.09,
+      "attempts": 70792,
+      "correct": 63774,
+      "wrong": 4896,
+      "timeout": 2122,
+      "victoriesInTarget": 541,
+      "victoryWallSeconds": {
+        "min": 162.03,
+        "p10": 201.76,
+        "median": 252.56,
+        "p90": 300.37,
+        "max": 347.86
+      },
+      "victoryBattleSeconds": {
+        "min": 149.03,
+        "p10": 188.76,
+        "median": 239.56,
+        "p90": 287.36,
+        "max": 334.85
+      },
+      "deathWallSeconds": {
+        "min": 32.23,
+        "p10": 101.51,
+        "median": 203.38,
+        "p90": 283.47,
+        "max": 333.22
+      },
+      "victoryHitsByBoss": [
+        {
+          "min": 8,
+          "p10": 8,
+          "median": 8,
+          "p90": 10,
+          "max": 11
+        },
+        {
+          "min": 8,
+          "p10": 8,
+          "median": 10,
+          "p90": 13,
+          "max": 16
+        },
+        {
+          "min": 10,
+          "p10": 10,
+          "median": 14,
+          "p90": 20,
+          "max": 25
+        },
+        {
+          "min": 11,
+          "p10": 11,
+          "median": 17,
+          "p90": 23,
+          "max": 29
+        },
+        {
+          "min": 15,
+          "p10": 15,
+          "median": 23,
+          "p90": 29,
+          "max": 36
+        }
+      ],
+      "victoryTurns": {
+        "min": 52,
+        "p10": 62,
+        "median": 78,
+        "p90": 93,
+        "max": 108
+      },
+      "exampleVictory": {
+        "seed": 20261008,
+        "phase": "victory",
+        "boss": 5,
+        "hits": [
+          8,
+          8,
+          10,
+          11,
+          15
+        ],
+        "wrongs": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "timeouts": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "turns": 52,
+        "wallMs": 162028.46807384863,
+        "battleMs": 149028.46807384863,
+        "tutorialMs": 0,
+        "pausedMs": 0,
+        "grade": "SS",
+        "accuracy": 1,
+        "stats": {
+          "correct": 52,
+          "wrong": 0,
+          "timeout": 0,
+          "PERFECT": 15,
+          "GREAT": 25,
+          "GOOD": 12
+        },
+        "highestCombo": 52,
+        "playerHP": 100,
+        "berserkCount": 1,
+        "defeatedBosses": 5,
+        "moves": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "C01",
+          "C02",
+          "C03",
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "E01",
+          "E02",
+          "E03",
+          "E04"
+        ]
+      },
+      "exampleDeath": {
+        "seed": 20261010,
+        "phase": "dead",
+        "boss": 4,
+        "hits": [
+          8,
+          11,
+          14,
+          17,
+          0
+        ],
+        "wrongs": [
+          0,
+          0,
+          0,
+          5,
+          0
+        ],
+        "timeouts": [
+          0,
+          1,
+          0,
+          2,
+          0
+        ],
+        "turns": 58,
+        "wallMs": 198344.0123915202,
+        "battleMs": 190241.0123915202,
+        "tutorialMs": 0,
+        "pausedMs": 0,
+        "grade": "C",
+        "accuracy": 0.8620689655172413,
+        "stats": {
+          "correct": 50,
+          "wrong": 5,
+          "timeout": 3,
+          "PERFECT": 8,
+          "GREAT": 30,
+          "GOOD": 12
+        },
+        "highestCombo": 20,
+        "playerHP": 0,
+        "berserkCount": 0,
+        "defeatedBosses": 3,
+        "moves": [
+          "A01",
+          "A02",
+          "A03",
+          "C01",
+          "C03",
+          "D01",
+          "D02",
+          "D04",
+          "E01",
+          "E02"
+        ]
+      }
+    }
+  ]
+}

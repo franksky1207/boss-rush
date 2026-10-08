@@ -1,0 +1,69 @@
+{
+  "id": "final-overlord-berserk",
+  "prototype": false,
+  "heightRatio": 1.7,
+  "facing": "left",
+  "mirror": true,
+  "canvas": {
+    "width": 1024,
+    "height": 1536
+  },
+  "visibleBounds": {
+    "x": 0,
+    "y": 11,
+    "width": 1024,
+    "height": 1507
+  },
+  "anchor": {
+    "x": 0.5,
+    "y": 0.9830729166666666
+  },
+  "safeMargin": 0.01,
+  "theme": "berserk",
+  "weapon": "greatsword",
+  "floating": 0,
+  "poses": {
+    "idle": {
+      "file": "idle.webp",
+      "canvas": {
+        "width": 1024,
+        "height": 1536
+      },
+      "alphaBounds": [
+        21,
+        11,
+        1001,
+        1510
+      ],
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9830729166666666
+      },
+      "bytes": 363974,
+      "source": "/workspace/generated_images/exec-3a0bbc4f-173c-46f3-83f3-d2c37113c04e.png",
+      "sha256": "31dea5ce47ecfb2b5fb404ce745b49e7ceec340e6c30b8fe20689cd9c48f2be3"
+    },
+    "attack": {
+      "file": "attack.webp",
+      "canvas": {
+        "width": 1024,
+        "height": 1536
+      },
+      "alphaBounds": [
+        17,
+        11,
+        1020,
+        1518
+      ],
+      "anchor": {
+        "x": 0.5,
+        "y": 0.98828125
+      },
+      "bytes": 372284,
+      "source": "/workspace/generated_images/exec-36281a9e-8bf6-4384-a17b-94c1a262c44c.png",
+      "sha256": "ff6ea3453950eea38678a6797de3b09b810c757992b4431e9292a7135ba46f96"
+    }
+  },
+  "source": "Original OpenAI-generated game art; image generation from character reference",
+  "review": "已製作／整合，美術與實機確認待驗收"
+}

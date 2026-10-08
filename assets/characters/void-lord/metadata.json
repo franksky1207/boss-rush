@@ -1,0 +1,69 @@
+{
+  "id": "void-lord",
+  "prototype": false,
+  "heightRatio": 1.35,
+  "facing": "left",
+  "mirror": true,
+  "canvas": {
+    "width": 1024,
+    "height": 1536
+  },
+  "visibleBounds": {
+    "x": 0,
+    "y": 19,
+    "width": 1024,
+    "height": 1490
+  },
+  "anchor": {
+    "x": 0.5,
+    "y": 0.982421875
+  },
+  "safeMargin": 0.01,
+  "theme": "void",
+  "weapon": "staff",
+  "floating": 0.08,
+  "poses": {
+    "idle": {
+      "file": "idle.webp",
+      "canvas": {
+        "width": 1024,
+        "height": 1536
+      },
+      "alphaBounds": [
+        63,
+        19,
+        1004,
+        1509
+      ],
+      "anchor": {
+        "x": 0.5,
+        "y": 0.982421875
+      },
+      "bytes": 351696,
+      "source": "/workspace/generated_images/exec-1040e8a5-dd13-4e40-948c-05a73c3eb08c.png",
+      "sha256": "3e64494a6fe9c32e223b7e430c924ee54392932a33e27e0df8a8ba264af36d2f"
+    },
+    "attack": {
+      "file": "attack.webp",
+      "canvas": {
+        "width": 1024,
+        "height": 1536
+      },
+      "alphaBounds": [
+        28,
+        47,
+        1013,
+        1495
+      ],
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9733072916666666
+      },
+      "bytes": 394990,
+      "source": "/workspace/generated_images/exec-70cd6aca-85f5-436d-8235-2454c59ab19e.png",
+      "sha256": "7870556a644900bcade224222f0a9d7a68ded24090150ee390227003b1f19ed0"
+    }
+  },
+  "source": "Original OpenAI-generated game art; image generation from character reference",
+  "review": "已製作／整合，美術與實機確認待驗收"
+}

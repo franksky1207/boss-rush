@@ -1,0 +1,82 @@
+{
+  "character": "silver-knight",
+  "source": "OpenAI image generation; original character with no external franchise reference",
+  "review": "使用者已接受0.8.0勇者畫風；實機辨識度待驗收",
+  "facing": "right",
+  "canvas": {
+    "width": 1024,
+    "height": 1536
+  },
+  "visibleBounds": {
+    "x": 0,
+    "y": 50,
+    "width": 1024,
+    "height": 1423
+  },
+  "poses": {
+    "idle": {
+      "file": "idle.webp",
+      "anchor": {
+        "x": 0.5,
+        "y": 0.953125
+      },
+      "bytes": 239054,
+      "alphaBounds": [
+        37,
+        50,
+        997,
+        1464
+      ],
+      "sourceFile": "exec-8c5b763e-054b-4e8d-b1ac-39c3f3145ed4.png",
+      "sha256": "e3c84d5c3aefad026d14858bad8a6008b130dcfaf56d6cdf36733f3daa1b5b44"
+    },
+    "attack": {
+      "file": "attack.webp",
+      "anchor": {
+        "x": 0.5,
+        "y": 0.951171875
+      },
+      "bytes": 227808,
+      "alphaBounds": [
+        15,
+        110,
+        1013,
+        1461
+      ],
+      "sourceFile": "exec-c7b14ec6-fdeb-4cef-99fc-601d287c38ac.png",
+      "sha256": "37e2e402668be9ec02fb86adfb2e0f091bad74211abfc2e1cd7c4d139e1e5b3e"
+    },
+    "defend": {
+      "file": "defend.webp",
+      "anchor": {
+        "x": 0.5,
+        "y": 0.958984375
+      },
+      "bytes": 268932,
+      "alphaBounds": [
+        17,
+        67,
+        1004,
+        1473
+      ],
+      "sourceFile": "exec-f66cd732-7e69-4781-897e-cf2e1e4532aa.png",
+      "sha256": "8659bf8095fc22d0f0c2c1177ad5ff55721957c7e25794f398d37966baf8363c"
+    },
+    "hurt": {
+      "file": "hurt.webp",
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9322916666666666
+      },
+      "bytes": 273786,
+      "alphaBounds": [
+        28,
+        67,
+        997,
+        1432
+      ],
+      "sourceFile": "exec-54091086-c2e5-4adb-b87b-c5ecf6ae2c76.png",
+      "sha256": "6e5815b03cbba04dbf8a467312903bdd47d518bef9e98fa936032b0770e59704"
+    }
+  }
+}

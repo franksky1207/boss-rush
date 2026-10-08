@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 240">
+  <title>終焉魔王：幾何占位圖，非正式立繪</title>
+  <path d="M28 14 60 23 79 2 100 23 133 13 110 53 99 66 62 66 49 50Z" fill="#4f4d47" stroke="#c6ae6a" stroke-width="3"/>
+  <path d="M59 37 74 40M88 40 103 36" stroke="#df9289" stroke-width="4"/>
+  <path d="M60 67 101 66 126 82 110 151 50 151 33 83Z" fill="#333841" stroke="#bda669" stroke-width="3"/>
+  <path d="m80 72 21 29-21 35-22-35Z" fill="#726348" stroke="#b8a16e" stroke-width="3"/>
+  <path d="M33 76 3 59 6 108 38 129 56 89M124 76 154 59 153 108 122 129 105 89" fill="#55524a" stroke="#c3ae72" stroke-width="3"/>
+  <path d="M13 120 8 171 35 171 46 120M118 119 125 171 153 170 145 120" fill="#343940" stroke="#bda66b" stroke-width="3"/>
+  <path d="M51 151 77 149 71 209 75 238 30 238 38 206ZM85 151 110 150 121 206 135 238 89 238 90 209Z" fill="#30353e" stroke="#c0a96d" stroke-width="3"/>
+</svg>

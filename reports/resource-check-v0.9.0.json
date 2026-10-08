@@ -1,0 +1,19 @@
+{
+  "version": "0.9.0",
+  "newImages": 17,
+  "totalImages": 21,
+  "imageBytes": 6342848,
+  "fontBytes": 468100,
+  "fontSHA256": "bd977e800efec68c25fcbc045e1443f3a078bf8b00c9392d4bf5aa185a908659",
+  "fontLicense": "SIL Open Font License 1.1",
+  "imageMetadataHashesVerified": true,
+  "characterCanvas": [
+    1024,
+    1536
+  ],
+  "backgroundCanvas": [
+    1672,
+    941
+  ],
+  "quality": 85
+}

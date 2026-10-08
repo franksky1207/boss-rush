@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <title>破敗競技場：幾何占位背景，非正式美術</title>
+  <defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#121b27"/><stop offset="1" stop-color="#34404a"/></linearGradient><linearGradient id="floor" x2="0" y2="1"><stop stop-color="#26313b"/><stop offset="1" stop-color="#111820"/></linearGradient></defs>
+  <path fill="url(#sky)" d="M0 0H1920V1080H0Z"/>
+  <g fill="#16212d" stroke="#51606b" stroke-width="6" opacity=".7">
+    <path d="M80 800V360Q240 80 400 360V800H320V385Q240 235 160 385V800Z"/>
+    <path d="M520 800V280Q680 0 840 280V800H760V305Q680 155 600 305V800Z"/>
+    <path d="M1080 800V280Q1240 0 1400 280V800H1320V305Q1240 155 1160 305V800Z"/>
+    <path d="M1520 800V360Q1680 80 1840 360V800H1760V385Q1680 235 1600 385V800Z"/>
+  </g>
+  <path d="M0 770 400 745 720 800 1160 790 1530 750 1920 775V1080H0Z" fill="url(#floor)"/>
+  <g stroke="#56606a" stroke-width="3" fill="none" opacity=".4"><ellipse cx="960" cy="940" rx="790" ry="130"/><ellipse cx="960" cy="940" rx="580" ry="75"/><path d="M300 975 640 925 765 976 1160 920 1530 985M950 805 917 861 958 890 923 1040"/></g>
+</svg>

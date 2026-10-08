@@ -1,0 +1,87 @@
+name: Validate and prepare GitHub Pages
+
+on:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: 'Publish to GitHub Pages after review'
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  browsers:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    env:
+      BOSS_RUSH_BROWSER: ${{ matrix.browser }}
+      BOSS_RUSH_TEST_URL: http://127.0.0.1:8000/boss-rush/
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps ${{ matrix.browser }}
+      - run: npm run verify && npm run build && npm run validate:release
+      - name: Start release site at repository subpath
+        run: |
+          python3 -m http.server 8000 --bind 127.0.0.1 --directory dist > /tmp/boss-rush-http.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent "$BOSS_RUSH_TEST_URL" > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/boss-rush-http.log
+          exit 1
+      - run: npm run test:browser
+      - run: npm run test:bosses
+      - run: npm run test:presentation
+      - run: node tests/difficulty-browser.mjs
+      - run: node tests/lifecycle-browser.mjs
+      - run: node tests/visual-browser.mjs
+      - run: node tests/stress-browser.mjs
+      - name: Chromium audio, storage and CPU checks
+        if: matrix.browser == 'chromium'
+        run: node tests/score-browser.mjs
+
+  build:
+    needs: browsers
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run verify && npm run build && npm run validate:release
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/boss-rush
+
+  deploy:
+    if: github.event_name == 'workflow_dispatch' && inputs.publish && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish reviewed artifact
+        id: deployment
+        uses: actions/deploy-pages@v4

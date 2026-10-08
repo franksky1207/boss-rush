@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 240">
+  <title>烈焰魔將：幾何占位圖，非正式立繪</title>
+  <path d="M50 36 31 3 67 20 92 18 129 2 110 41 104 60 60 60Z" fill="#684339" stroke="#de9c70" stroke-width="3"/>
+  <path d="M60 38 77 43 98 35M80 45 77 65" fill="none" stroke="#f0bd76" stroke-width="4"/>
+  <path d="M44 70 80 60 117 70 108 149 52 149Z" fill="#513632" stroke="#c87750" stroke-width="3"/>
+  <path d="M47 71 9 63 12 109 40 130 62 91M115 71 151 63 148 110 122 129 102 91" fill="#764c3c" stroke="#e79e66" stroke-width="3"/>
+  <path d="M18 119 14 169 40 170 47 119M117 119 124 170 149 169 142 118" fill="#493638" stroke="#dd8b60" stroke-width="3"/>
+  <path d="M52 147 77 147 65 207 72 238 31 238 34 215ZM85 148 108 146 123 215 132 238 91 238 90 207Z" fill="#543e3b" stroke="#d89564" stroke-width="3"/>
+  <path d="M78 75 68 102 89 116 75 142M26 90 38 111M128 90 119 111M57 168 48 197M105 168 114 197" fill="none" stroke="#ffbd71" stroke-width="4"/>
+</svg>

@@ -1,0 +1,69 @@
+{
+  "id": "shadow-assassin",
+  "prototype": false,
+  "heightRatio": 0.95,
+  "facing": "left",
+  "mirror": false,
+  "canvas": {
+    "width": 1024,
+    "height": 1536
+  },
+  "visibleBounds": {
+    "x": 0,
+    "y": 72,
+    "width": 1024,
+    "height": 1398
+  },
+  "anchor": {
+    "x": 0.5,
+    "y": 0.95703125
+  },
+  "safeMargin": 0.01,
+  "theme": "shadow",
+  "weapon": "daggers",
+  "floating": 0,
+  "poses": {
+    "idle": {
+      "file": "idle.webp",
+      "canvas": {
+        "width": 1024,
+        "height": 1536
+      },
+      "alphaBounds": [
+        62,
+        72,
+        985,
+        1470
+      ],
+      "anchor": {
+        "x": 0.5,
+        "y": 0.95703125
+      },
+      "bytes": 291358,
+      "source": "/workspace/generated_images/exec-797dedc0-313f-46de-8129-3f61103ad0ee.png",
+      "sha256": "6fef6d8e44869716dc8946eb64c7fe009b520d98769ff4a889625544393557ef"
+    },
+    "attack": {
+      "file": "attack.webp",
+      "canvas": {
+        "width": 1024,
+        "height": 1536
+      },
+      "alphaBounds": [
+        16,
+        92,
+        1008,
+        1463
+      ],
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9524739583333334
+      },
+      "bytes": 262198,
+      "source": "/workspace/generated_images/exec-adc0da63-f7ec-40c6-85ba-d8ffe0f9df05.png",
+      "sha256": "595d851e5d0be45d6f45b8b43bbf7f323dbb92dbecc95d0040112d6e33826ed7"
+    }
+  },
+  "source": "Original OpenAI-generated game art; image generation from character reference",
+  "review": "已製作／整合，美術與實機確認待驗收"
+}

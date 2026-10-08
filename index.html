@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10151b">
+  <title>極速魔王挑戰</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./styles/game.css?v=0.9.0">
+  <script type="module" src="./ui/app.js?v=0.9.0"></script>
+</head>
+<body>
+  <main>
+    <section id="home" class="panel home">
+      <p class="eyebrow">五王連戰 · 原型版本</p>
+      <h1>極速魔王挑戰</h1>
+      <p class="lead">看清蓄勢，把握一瞬。</p>
+      <p>判斷招式，選擇攻擊、防禦、閃避或反擊。<br>連擊跨王保留，擊敗五王即通關。</p>
+      <label for="difficulty">難度</label>
+      <select id="difficulty"><option value="easy">簡單</option><option value="normal" selected>普通</option><option value="hard">困難</option></select>
+      <p id="difficulty-description" class="note"></p>
+      <div class="mode-buttons">
+        <button id="start" class="primary">開始挑戰</button>
+        <button id="start-tutorial">開始教學</button>
+        <button data-open-settings>設定</button><button data-open-board>本機排行榜</button>
+      </div>
+      <p class="note">16 招逐王解鎖 · 三種難度 · 五個戰場<br>全角色立繪、戰鬥特效、短音效與本機排行榜。</p>
+    </section>
+
+    <section id="battle" class="battle" aria-label="戰鬥畫面" hidden>
+      <header class="hud">
+        <div class="boss-health">
+          <div class="health-label"><span id="boss-name"></span><span id="boss-hp"></span></div>
+          <progress id="boss-meter" aria-label="魔王生命值"></progress>
+        </div>
+        <div class="stat"><span>關卡</span><strong id="stage"></strong></div>
+        <div class="stat"><span>連擊</span><strong id="combo"></strong></div>
+        <div class="stat"><span>戰鬥時間</span><strong id="time"></strong></div>
+        <div class="battle-tools"><button id="manual-pause">暫停</button><button id="exit">退出</button></div>
+      </header>
+      <div id="arena" class="arena" data-phase="bossIntro">
+        <img id="scene-image" class="scene-image" alt="" aria-hidden="true" hidden>
+        <p class="prototype"></p>
+        <div class="fighter hero" data-asset="loading">
+          <div class="ground-shadow" aria-hidden="true"></div>
+          <div class="motion"><div class="pose-frame" aria-hidden="true"><img class="actor-image" alt=""><div class="silhouette">♜</div><i class="weapon sword"></i><i class="actor-shield"></i></div></div>
+          <span class="actor-label">蒼銀騎士</span>
+        </div>
+        <div class="fighter enemy" data-asset="loading">
+          <div class="ground-shadow" aria-hidden="true"></div>
+          <div class="motion"><div class="pose-frame" aria-hidden="true"><img class="actor-image" alt=""><div class="silhouette">♜</div><i class="weapon axe"></i><i class="actor-shield"></i></div></div>
+          <div id="gesture" class="gesture" aria-hidden="true"></div><span id="enemy-name" class="actor-label"></span>
+        </div>
+        <div class="move-card">
+          <p id="phase-label" class="eyebrow"></p>
+          <h2 id="move"></h2>
+          <p id="cue"></p>
+          <div id="countdown" class="countdown"></div>
+          <progress id="timer-meter" aria-label="剩餘反應時間"></progress>
+        </div>
+        <div class="effects-layer" aria-hidden="true"><div id="boss-aura" class="boss-aura"></div><div id="combat-effect" class="combat-effect"></div><div id="dodge-trail" class="dodge-trail"></div><div id="enemy-trail" class="dodge-trail enemy-trail"></div><div id="damage-text" class="damage-text" aria-hidden="true"></div><div id="rating-text" class="rating-text" aria-hidden="true"></div><div id="combo-burst" class="combo-burst" aria-hidden="true"></div></div>
+        <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+      </div>
+      <footer class="controls">
+        <div class="player-health"><span>勇者 HP <strong id="player-hp"></strong></span><progress id="player-meter" max="100" aria-label="勇者生命值"></progress></div>
+        <div id="actions" class="actions" aria-label="戰鬥行動">
+          <button data-action="attack" disabled><span>⚔️</span>攻擊</button>
+          <button data-action="defend" disabled><span>🛡️</span>防禦</button>
+          <button data-action="dodge" disabled><span>💨</span>閃避</button>
+          <button data-action="counter" disabled><span>✨</span>反擊</button>
+        </div>
+      </footer>
+    </section>
+
+    <section id="result" class="panel result" hidden>
+      <p id="result-mode" class="eyebrow"></p>
+      <h1 id="result-title"></h1>
+      <p id="result-description"></p>
+      <dl id="summary"></dl>
+      <p id="result-grade" class="result-grade"></p>
+      <form id="save-score" hidden novalidate>
+        <label for="nickname">暱稱（1–12 字）</label>
+        <div class="nickname-row"><input id="nickname" name="nickname" type="text" autocomplete="off" aria-describedby="save-status"><button id="submit-score" class="primary" type="submit">記錄成績</button></div>
+      </form>
+      <p id="save-status" class="note" role="status"></p>
+      <div class="mode-buttons"><button id="restart" class="primary">從第一王重新挑戰</button><button id="back-home">返回主畫面</button><button data-open-board>本機排行榜</button><button data-open-settings>設定</button></div>
+    </section>
+
+    <section id="pause" class="pause" role="dialog" aria-modal="true" aria-labelledby="pause-title" hidden>
+      <div class="panel"><h2 id="pause-title">挑戰已暫停</h2><p>遊戲與動畫已停止。<br>按下繼續，沿用剩餘反應時間。</p><div class="mode-buttons"><button id="resume" class="primary">繼續</button><button id="paused-exit">退出</button><button data-open-settings>設定</button></div></div>
+    </section>
+    <section id="tutorial" class="pause" role="dialog" aria-modal="true" aria-labelledby="tutorial-title" hidden>
+      <div class="panel"><p class="eyebrow">本局首次招式教學 · 不計時</p><h2 id="tutorial-title"></h2><p id="tutorial-cue"></p><p>正確行動：<strong id="tutorial-answer"></strong></p><p class="note">確認後開始蓄勢與倒數，請自行選擇行動。</p><div class="mode-buttons"><button id="confirm-tutorial" class="primary">開始判斷</button><button id="tutorial-pause">暫停</button><button id="tutorial-exit">退出</button></div></div>
+    </section>
+    <section id="exit-confirmation" class="pause" role="dialog" aria-modal="true" aria-labelledby="exit-title" hidden>
+      <div class="panel"><h2 id="exit-title">放棄這次挑戰？</h2><p>本局進度不會保留，返回主畫面後可重新選擇模式。</p><div class="mode-buttons"><button id="cancel-exit" class="primary">取消，保持暫停</button><button id="confirm-exit">確認退出</button></div></div>
+    </section>
+    <section id="settings" class="pause" role="dialog" aria-modal="true" aria-labelledby="settings-title" hidden>
+      <div class="panel"><h2 id="settings-title">設定</h2>
+        <div class="settings-fields">
+          <label class="toggle"><input id="sound-enabled" type="checkbox">音效</label>
+          <label for="volume">主音量 <output id="volume-value" for="volume">70%</output></label><input id="volume" type="range" min="0" max="100" step="1" value="70">
+          <label class="toggle"><input id="reduced-effects" type="checkbox">降低特效（減少晃動、殘影與閃光）</label>
+        </div>
+        <button id="test-sound">試聽音效</button><p id="settings-status" class="note" role="status"></p><button id="close-settings" class="primary">完成</button>
+      </div>
+    </section>
+    <section id="leaderboard" class="pause" role="dialog" aria-modal="true" aria-labelledby="leaderboard-title" hidden>
+      <div class="panel"><h2 id="leaderboard-title">本機排行榜 · 各難度前 20 名</h2><p class="note">僅記錄挑戰模式五王通關；同名可保留多筆，資料不跨裝置同步。</p>
+        <label for="board-difficulty">難度分榜</label><select id="board-difficulty"><option value="easy">簡單</option><option value="normal" selected>普通</option><option value="hard">困難</option></select>
+        <ol id="leaderboard-list" class="leaderboard-list"></ol><p id="leaderboard-status" class="note" role="status"></p>
+        <div class="mode-buttons"><button id="clear-board">清除排行榜</button><button id="close-board" class="primary">返回</button></div>
+      </div>
+    </section>
+    <section id="clear-confirmation" class="pause" role="dialog" aria-modal="true" aria-labelledby="clear-title" hidden>
+      <div class="panel"><h2 id="clear-title">確定清除排行榜？</h2><p>將清除這台裝置的全部成績，保留音效與畫面設定。</p><div class="mode-buttons"><button id="cancel-clear" class="primary">取消</button><button id="confirm-clear">確認清除</button></div></div>
+    </section>
+    <noscript>請啟用 JavaScript 才能開始挑戰。</noscript>
+  </main>
+</body>
+</html>

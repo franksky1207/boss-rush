@@ -1,0 +1,74 @@
+[
+  {
+    "id": "iron-guard",
+    "kind": "character",
+    "description": "Iron Guard: massive broad black iron plate-armored knight, dark enclosed helmet with tiny amber eyes, enormous dark tower shield and heavy single-headed battle axe. Dark worn steel with restrained bronze trim, readable heavy silhouette. Idle guarded stance.",
+    "idle": "/workspace/generated_images/exec-5b2ad9e6-c0d2-4ad2-a562-eeb9d4104f7c.png",
+    "attack": "/workspace/generated_images/exec-7b95e9d3-4b23-423a-ac19-d7e075df2bac.png"
+  },
+  {
+    "id": "shadow-assassin",
+    "kind": "character",
+    "description": "Shadow Assassin: slender agile adult warrior in black and deep violet leather armor, long purple hooded cloak, face almost hidden with pale violet eyes, TWO short curved daggers. Anatomically clear slim figure, tight silhouette. Idle crouched ready stance.",
+    "idle": "/workspace/generated_images/exec-797dedc0-313f-46de-8129-3f61103ad0ee.png",
+    "attack": "/workspace/generated_images/exec-adc0da63-f7ec-40c6-85ba-d8ffe0f9df05.png"
+  },
+  {
+    "id": "flame-general",
+    "kind": "character",
+    "description": "Flame General: muscular lava-armored demon general, charcoal basalt armor cracked with glowing orange molten seams, two curved dark horns, burning greatsword. Restrained warm glow ONLY inside character silhouette. Idle imposing stance.",
+    "idle": "/workspace/generated_images/exec-82455484-3e29-4be5-8f4d-80bf2c19fd6d.png",
+    "attack": "/workspace/generated_images/exec-f32c9992-dcaa-4748-8786-a5bbd679a286.png"
+  },
+  {
+    "id": "void-lord",
+    "kind": "character",
+    "description": "Void Lord: tall ominous floating black-violet sorcerer in layered ornate robes, faceless dark hood with two violet eyes, elegant staff topped with contained purple crystal, hands clear, closed robe bottom with pointed shoe tips visible. Robe hangs to same grounding anchor (floating implemented in game). Idle spellcasting ready stance.",
+    "idle": "/workspace/generated_images/exec-1040e8a5-dd13-4e40-948c-05a73c3eb08c.png",
+    "attack": "/workspace/generated_images/exec-70cd6aca-85f5-436d-8235-2454c59ab19e.png"
+  },
+  {
+    "id": "final-overlord",
+    "kind": "character",
+    "description": "Final Overlord: monumental muscular demon king in ornate black-and-gold armor, narrow crimson eyes behind an angular crown-like helmet, large long dark greatsword with gold guard, deep burgundy cloak. Regal and terrifying but original design. Idle calm stance.",
+    "idle": "/workspace/generated_images/exec-78f5ab7b-e8a0-4290-8187-029831e73a5b.png",
+    "attack": "/workspace/generated_images/exec-01093493-cebb-4306-8802-8590977ac4d1.png"
+  },
+  {
+    "id": "final-overlord-berserk",
+    "kind": "character",
+    "description": "Final Overlord BERSERK: SAME black-and-gold demon king armor/crown helmet, crimson eyes, long dark greatsword, burgundy cape, armor seams blazing restrained dark red, larger jagged shoulder details and tense awakened posture. Contained crimson glow within silhouette, no ambient haze. Idle awakened stance.",
+    "idle": "/workspace/generated_images/exec-3a0bbc4f-173c-46f3-83f3-d2c37113c04e.png",
+    "attack": "/workspace/generated_images/exec-36281a9e-8bf6-4384-a17b-94c1a262c44c.png"
+  },
+  {
+    "id": "ruined-arena",
+    "kind": "background",
+    "description": "Ruined Arena: abandoned stone colosseum with broken arches, worn columns, crumbled stadium seats and subdued blue-gray stone, pale atmospheric daylight, no dramatic glowing fires.",
+    "idle": "/workspace/generated_images/exec-9cf7ab41-362a-4d51-98c7-85f6d0e3dbec.png"
+  },
+  {
+    "id": "moonlit-ruins",
+    "kind": "background",
+    "description": "Moonlit Ruins: ruined gothic courtyard under a bright crescent moon, broken tall arches, distant gothic buildings, muted indigo/violet nocturnal light, shallow drifting mist far in background.",
+    "idle": "/workspace/generated_images/exec-ab7953a9-21f4-43c7-9931-326780532719.png"
+  },
+  {
+    "id": "lava-fortress",
+    "kind": "background",
+    "description": "Lava Fortress: colossal basalt castle courtyard with obsidian columns, distant lava streams and molten cracks in distant walls, warm embers and dark orange glow. Foreground battlefield solid dark stone, not lava.",
+    "idle": "/workspace/generated_images/exec-f59cdfe7-bafc-4bc1-bb44-103f5b6912a6.png"
+  },
+  {
+    "id": "void-temple",
+    "kind": "background",
+    "description": "Void Temple: ancient floating arcane temple, imposing black-violet stone pillars, subtle rune circles in distant structures, fragmented architecture opening onto a deep purple starless void. Foreground is a coherent solid stone platform.",
+    "idle": "/workspace/generated_images/exec-b1b0f9e4-f039-4a1f-8a7b-d78de33a525b.png"
+  },
+  {
+    "id": "terminal-throne",
+    "kind": "background",
+    "description": "Terminal Throne: ruined royal throne chamber with gigantic black-gold throne in distance, dark crimson banners, black stone columns, subdued deep red sky beyond shattered windows, dramatic solemn atmosphere.",
+    "idle": "/workspace/generated_images/exec-e7e45dfb-3aaf-4e57-8b4a-f5e08b714138.png"
+  }
+]
