@@ -96,7 +96,7 @@ try {
     }
   }
   assert.ok((await page.locator('#summary').textContent()).includes('52 / 0 / 0'));
-  assert.equal(await page.locator('#result-mode').textContent(), '教學模式 · 不列入排行榜');
+  assert.equal(await page.locator('#result-mode').textContent(), '普通 · 教學模式 · 不列入排行榜');
   await page.locator('#restart').click();
   await page.evaluate(() => window.__advance(900));
   assert.equal(await page.locator('#tutorial').isVisible(), true);

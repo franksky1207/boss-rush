@@ -39,6 +39,15 @@ try {
   await page.evaluate(()=>window.dispatchEvent(new Event('pagehide')));
   assert.equal(await page.evaluate(()=>window.__outputs[0].paused),true);
   assert.equal(await page.evaluate(()=>window.__outputs[0].muted),true);
+  for (let i=0;i<5;i++) {
+    await page.locator('#test-sound').click();
+    await page.waitForFunction(()=>window.__audio?.state==='running'&&window.__outputs.at(-1)?.paused===false);
+    assert.equal(await page.evaluate(()=>window.__outputs.at(-2).srcObject),null);
+    assert.equal(await page.evaluate(()=>window.__stream.getAudioTracks()[0].readyState),'live');
+    assert.match(await page.locator('#settings-status').textContent(),/手機媒體輸出/);
+    await page.evaluate(()=>window.dispatchEvent(new Event('pagehide')));
+    assert.equal(await page.evaluate(()=>window.__outputs.at(-1).paused),true);
+  }
   assert.deepEqual(errors,[]);
-  console.log('PASS: iPhone detection, real media-stream audio output, trial sound, mute/re-enable, visible status');
+  console.log('PASS: iPhone detection, media audio, mute/re-enable, five background/return rebuild cycles, visible status');
 }finally{await browser.close();}

@@ -1,5 +1,5 @@
-import { ACTIONS, BERSERK_HP, BOSSES, DIFFICULTIES, HP, TIMING } from '../data/rules.js?v=0.9.5';
-import { MovePicker } from './moves.js?v=0.9.5';
+import { ACTIONS, BERSERK_HP, BOSSES, DIFFICULTIES, HP, TIMING } from '../data/rules.js?v=0.9.6';
+import { MovePicker } from './moves.js?v=0.9.6';
 
 const ACTIVE = new Set(['telegraph', 'awaitingInput', 'resolving', 'nextTurn']);
 const FINISHED = new Set(['home', 'dead', 'victory']);

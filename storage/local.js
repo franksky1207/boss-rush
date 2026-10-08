@@ -1,4 +1,4 @@
-import { topRecords, validRecord } from '../core/results.js?v=0.9.5';
+import { topRecords, validRecord } from '../core/results.js?v=0.9.6';
 
 export const PREFERENCES_KEY = 'boss-rush.preferences.v1';
 export const LEADERBOARD_KEY = 'boss-rush.leaderboard.v1';

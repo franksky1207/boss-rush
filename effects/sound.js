@@ -23,6 +23,7 @@ export class Sound {
   #musicBuffer = null;
   #musicWanted = false;
   #silenced = false;
+  #resetOnGesture = false;
   #settings = { sound: true, volume: 70 };
   unavailable = false;
 
@@ -64,6 +65,10 @@ export class Sound {
     if (!this.#settings.sound || this.#settings.volume === 0) return Promise.resolve(false);
     try {
       this.#silenced = false;
+      if (this.#resetOnGesture) {
+        this.#disposeOutput();
+        this.#resetOnGesture = false;
+      }
       if (!this.#context || this.#context.state === 'closed') {
         this.#context = this.#createContext();
         this.#musicBuffer = null;
@@ -96,6 +101,7 @@ export class Sound {
         // Safari 的 pointerdown resume 可能一直等待有效手勢；click/touchend 必須重新呼叫，
         // 不能沿用那個尚未完成的 Promise，否則後續所有試聽都會被卡住。
         const attempt = ++this.#attempt;
+        const context = this.#context;
         this.unavailable = false;
         this.#error = '';
         // resume 與媒體 play 都必須直接在使用者手勢內呼叫，不能等另一個 Promise 完成。
@@ -104,6 +110,7 @@ export class Sound {
         const playing = this.#output?.play();
         this.#unlocking = Promise.all([resumed, playing])
           .then(() => {
+            if (context !== this.#context || attempt !== this.#attempt) return false;
             if (this.#silenced) {
               if (this.#output) { this.#output.muted = true; this.#output.pause?.(); }
               return false;
@@ -202,6 +209,35 @@ export class Sound {
     if (this.#output) { this.#output.muted = true; this.#output.pause?.(); }
     this.#stopMusic();
     this.#stopEffects();
+  }
+
+  interrupt() {
+    this.stop();
+    // iOS 切分頁可能留下 running 但已無聲的 context／MediaStream。
+    // 回來後等下一次使用者操作重建，不要求重新整理，也不自動恢復戰鬥。
+    this.#resetOnGesture = true;
+    ++this.#attempt;
+    this.#unlocking = null;
+  }
+
+  #disposeOutput() {
+    this.#stopMusic();
+    this.#stopEffects();
+    if (this.#output) {
+      this.#output.muted = true;
+      this.#output.pause?.();
+      this.#output.srcObject = null;
+    }
+    for (const track of this.#destination?.stream?.getTracks?.() ?? []) track.stop();
+    try { this.#master?.disconnect(); } catch { /* 清理不得中斷遊戲。 */ }
+    try { const closed = this.#context?.close?.(); if (closed?.catch) void closed.catch(() => {}); } catch { /* 舊 context 仍須釋放引用。 */ }
+    this.#context = null;
+    this.#output = null;
+    this.#destination = null;
+    this.#master = null;
+    this.#musicBuffer = null;
+    this.#unlocking = null;
+    ++this.#attempt;
   }
 
   #startMusic() {

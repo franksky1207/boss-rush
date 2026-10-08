@@ -1,9 +1,9 @@
-import { evaluateResult, eligibleForLeaderboard, createRecord, validNickname } from '../core/results.js?v=0.9.5';
-import { LocalStore } from '../storage/local.js?v=0.9.5';
-import { Sound } from '../effects/sound.js?v=0.9.5';
-import { ACTIONS, DIFFICULTIES } from '../data/rules.js?v=0.9.5';
-import { Battle } from '../core/battle.js?v=0.9.5';
-import { Scene } from '../effects/scene.js?v=0.9.5';
+import { evaluateResult, eligibleForLeaderboard, createRecord, validNickname } from '../core/results.js?v=0.9.6';
+import { LocalStore } from '../storage/local.js?v=0.9.6';
+import { Sound } from '../effects/sound.js?v=0.9.6';
+import { ACTIONS, DIFFICULTIES } from '../data/rules.js?v=0.9.6';
+import { Battle } from '../core/battle.js?v=0.9.6';
+import { Scene } from '../effects/scene.js?v=0.9.6';
 
 const $ = id => document.getElementById(id);
 const battle = new Battle();
@@ -311,9 +311,10 @@ for (const button of buttons) {
 }
 
 function protectBackground() { sound.stop(); battle.pause(); render(); }
-document.addEventListener('visibilitychange', () => { if (document.hidden) protectBackground(); });
-window.addEventListener('pagehide', protectBackground);
-window.addEventListener('blur', protectBackground);
+function interruptBackground() { sound.interrupt(); battle.pause(); render(); }
+document.addEventListener('visibilitychange', () => { if (document.hidden) interruptBackground(); });
+window.addEventListener('pagehide', interruptBackground);
+window.addEventListener('blur', interruptBackground);
 window.addEventListener('resize', protectBackground);
 
 // 單一更新迴圈；新局不新增 timeout / interval 或第二個迴圈。

@@ -192,7 +192,7 @@ input[type="range"] { width: 100%; min-height: 48px; cursor: pointer; }
 .fighter[data-prototype="false"][data-asset="ready"] .weapon, .fighter[data-prototype="false"][data-asset="ready"] .actor-shield { display: none; }
 
 /* 本機字體與呈現特效；全部動態值來自 Scene 的同一遊戲時計。 */
-@font-face { font-family: "Rush Serif TC"; src: url('../assets/fonts/noto-serif-tc-game.woff?v=0.9.5') format('woff'); font-style: normal; font-weight: 200 900; font-display: swap; }
+@font-face { font-family: "Rush Serif TC"; src: url('../assets/fonts/noto-serif-tc-game.woff?v=0.9.6') format('woff'); font-style: normal; font-weight: 200 900; font-display: swap; }
 :root { --display-font: "Rush Serif TC", "Noto Serif TC", "Songti TC", serif; --gold: #f3d99a; --ice: #bde9ff; }
 body { letter-spacing: .015em; -webkit-font-smoothing: antialiased; }
 h1, h2, .actor-label, .actions button { font-family: var(--display-font); font-weight: 700; }

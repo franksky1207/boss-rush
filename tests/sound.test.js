@@ -194,3 +194,23 @@ test('退出後遲到的音訊啟動完成不能重新打開手機輸出', async
   assert.equal(output.paused,true);
   assert.equal(output.muted,true);
 });
+
+test('背景中斷後下一次手勢重建輸出，釋放舊音軌；遲到舊請求不能影響新輸出', async () => {
+  const old=audio(), next=audio();let release, stopped=0, closed=0,created=0;
+  old.context.close=()=>{closed++;old.context.state='closed';return Promise.resolve();};
+  old.context.createMediaStreamDestination=()=>({stream:{getTracks:()=>[{stop(){stopped++;}}]}});
+  next.context.createMediaStreamDestination=()=>({stream:{}});
+  const outputs=[];
+  const sound=new Sound({createContext:()=>created++===0?old.context:next.context,createOutput:()=>{
+    const output={paused:true,play(){if(outputs.length===1)return new Promise(resolve=>{release=()=>{this.paused=false;resolve();};});this.paused=false;return Promise.resolve();},pause(){this.paused=true;}};
+    outputs.push(output);return output;
+  }});
+  const pending=sound.unlock();sound.interrupt();
+  assert.equal(created,1);
+  assert.equal(await sound.unlock(),true);
+  assert.equal(created,2);assert.equal(closed,1);assert.equal(stopped,1);
+  assert.equal(outputs[0].srcObject,null);
+  release();assert.equal(await pending,false);
+  assert.equal(outputs[1].paused,false);assert.equal(outputs[1].muted,false);
+  assert.equal(sound.play('attack'),true);
+});
