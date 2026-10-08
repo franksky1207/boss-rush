@@ -141,3 +141,20 @@ test('手機媒體輸出在手勢內同時啟動，拒絕播放可重試，不�
   assert.equal(await sound.unlock(),true);
   assert.equal(plays,3);
 });
+
+test('首次 resume 一直等待手勢時，後續點擊重新呼叫並成功，不被舊 Promise 卡住', async () => {
+  const fake=audio();let calls=0,release;
+  fake.context.resume=()=>{
+    calls++;
+    if(calls===1)return new Promise(resolve=>{release=resolve;});
+    fake.context.state='running';return Promise.resolve();
+  };
+  const sound=new Sound({createContext:()=>fake.context});
+  const pending=sound.unlock();
+  assert.match(sound.status,/正在啟動/);
+  assert.equal(await sound.unlock(),true);
+  assert.equal(calls,2);
+  assert.match(sound.status,/音訊已啟動/);
+  release();await pending;
+  assert.match(sound.status,/音訊已啟動/);
+});

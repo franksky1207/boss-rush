@@ -1,4 +1,4 @@
-import { ARENA_VISUALS, BERSERK_VISUAL, BOSS_VISUALS, HERO_VISUAL } from '../data/visuals.js?v=0.9.2';
+import { ARENA_VISUALS, BERSERK_VISUAL, BOSS_VISUALS, HERO_VISUAL } from '../data/visuals.js?v=0.9.3';
 
 const clamp = value => Math.max(0, Math.min(1, value));
 const envelope = (time, start, peak, end) => time < start || time > end ? 0

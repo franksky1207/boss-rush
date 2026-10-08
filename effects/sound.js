@@ -15,6 +15,8 @@ export class Sound {
   #master = null;
   #voices = new Set();
   #unlocking = null;
+  #attempt = 0;
+  #error = '';
   #event = '';
   #music = null;
   #musicBuffer = null;
@@ -40,8 +42,9 @@ export class Sound {
 
   get status() {
     if (!this.#settings.sound || !this.#settings.volume) return '音效與配樂目前關閉或音量為 0。';
-    if (this.unavailable) return '音訊啟動失敗，請再次按「試聽音效」。';
+    if (this.unavailable) return `音訊啟動失敗${this.#error ? `（${this.#error}）` : ''}，請再次按「試聽音效」。`;
     if (!this.#context) return '按「試聽音效」啟動聲音。';
+    if (this.#unlocking) return `正在啟動音訊（${this.#context.state}${this.#output ? `／媒體${this.#output.paused ? '暫停' : '播放'}` : ''}）；若未出聲，可再按一次「試聽音效」。`;
     return this.#context.state === 'running' && (!this.#output || !this.#output.paused)
       ? `音訊已啟動（${this.#output ? '手機媒體輸出' : 'Web Audio'}）。`
       : '音訊尚未啟動，請按「試聽音效」。';
@@ -77,18 +80,36 @@ export class Sound {
           source.start();
         }
       }
-      if (this.#context.state === 'running' && (!this.#output || !this.#output.paused)) { this.unavailable = false; return Promise.resolve(true); }
-      if (!this.#unlocking) {
+      if (this.#context.state === 'running' && (!this.#output || !this.#output.paused)) {
+        ++this.#attempt;
+        this.#unlocking = null;
+        this.#error = '';
+        this.unavailable = false;
+        return Promise.resolve(true);
+      }
+      {
+        // Safari 的 pointerdown resume 可能一直等待有效手勢；click/touchend 必須重新呼叫，
+        // 不能沿用那個尚未完成的 Promise，否則後續所有試聽都會被卡住。
+        const attempt = ++this.#attempt;
+        this.unavailable = false;
+        this.#error = '';
         // resume 與媒體 play 都必須直接在使用者手勢內呼叫，不能等另一個 Promise 完成。
         const resumed = this.#context.resume();
         const playing = this.#output?.play();
         this.#unlocking = Promise.all([resumed, playing])
-          .then(() => { this.unavailable = this.#context.state !== 'running' || Boolean(this.#output?.paused); return !this.unavailable; })
-          .catch(() => { this.unavailable = true; return false; })
-          .finally(() => { this.#unlocking = null; });
+          .then(() => {
+            const ready = this.#context.state === 'running' && !this.#output?.paused;
+            if (attempt === this.#attempt) this.unavailable = !ready;
+            return ready;
+          })
+          .catch(error => {
+            if (attempt === this.#attempt) { this.unavailable = true; this.#error = error?.name ?? '播放失敗'; }
+            return false;
+          })
+          .finally(() => { if (attempt === this.#attempt) this.#unlocking = null; });
       }
       return this.#unlocking;
-    } catch { this.unavailable = true; return Promise.resolve(false); }
+    } catch (error) { this.unavailable = true; this.#error = error?.name ?? '初始化失敗'; return Promise.resolve(false); }
   }
 
   play(...names) {

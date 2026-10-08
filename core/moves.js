@@ -1,4 +1,4 @@
-import { ACTIONS, BOSSES, MOVES } from '../data/rules.js?v=0.9.2';
+import { ACTIONS, BOSSES, MOVES } from '../data/rules.js?v=0.9.3';
 
 export function unlockedMoves(bossIndex) {
   if (!Number.isInteger(bossIndex) || bossIndex < 0 || bossIndex >= BOSSES.length) throw new RangeError('無效關卡');

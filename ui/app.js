@@ -1,9 +1,9 @@
-import { evaluateResult, eligibleForLeaderboard, createRecord, validNickname } from '../core/results.js?v=0.9.2';
-import { LocalStore } from '../storage/local.js?v=0.9.2';
-import { Sound } from '../effects/sound.js?v=0.9.2';
-import { ACTIONS, DIFFICULTIES } from '../data/rules.js?v=0.9.2';
-import { Battle } from '../core/battle.js?v=0.9.2';
-import { Scene } from '../effects/scene.js?v=0.9.2';
+import { evaluateResult, eligibleForLeaderboard, createRecord, validNickname } from '../core/results.js?v=0.9.3';
+import { LocalStore } from '../storage/local.js?v=0.9.3';
+import { Sound } from '../effects/sound.js?v=0.9.3';
+import { ACTIONS, DIFFICULTIES } from '../data/rules.js?v=0.9.3';
+import { Battle } from '../core/battle.js?v=0.9.3';
+import { Scene } from '../effects/scene.js?v=0.9.3';
 
 const $ = id => document.getElementById(id);
 const battle = new Battle();
@@ -85,6 +85,10 @@ function render() {
   $('timer-meter').hidden = !judging && !telegraph;
   scene.update(state, preferences);
   sound.update(state);
+  if (auxiliary === 'settings') {
+    const status = store.preferenceError ? '設定已套用，但無法儲存於本機；重新整理後可能恢復預設。' : `${sound.status} 設定自動儲存於這台裝置。`;
+    if ($('settings-status').textContent !== status) $('settings-status').textContent = status;
+  }
 
   const view = `${state.session}:${state.turn}:${state.phase}:${state.paused}:${state.exitConfirmation}:${auxiliary}`;
   if (view !== previousView) {
@@ -277,6 +281,7 @@ $('confirm-clear').addEventListener('click', () => {
 
 // 初始化與恢復音訊僅發生於使用者操作；沒有背景排隊音效。
 document.addEventListener('pointerdown', () => { void sound.unlock(); }, { capture: true });
+document.addEventListener('touchend', () => { void sound.unlock(); }, { capture: true, passive: true });
 document.addEventListener('click', event => {
   void sound.unlock();
   const button = event.target.closest?.('button');
