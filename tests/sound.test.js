@@ -87,7 +87,7 @@ test('配樂單一循環、音效不中斷；暫停／靜音／返家停止，�
   fake.context.sampleRate=8000;
   fake.context.createBuffer=(_channels,length)=>({getChannelData:()=>new Float32Array(length)});
   fake.context.createBufferSource=()=>{
-    const source={start(){this.started=true;},stop(){this.stopped=true;},connect(){},disconnect(){}};
+    const source={start(){this.started=true;this.wasMusic=Boolean(this.loop);},stop(){this.stopped=true;},connect(){},disconnect(){}};
     sources.push(source);return source;
   };
   const sound=new Sound({createContext:()=>fake.context});
@@ -100,17 +100,17 @@ test('配樂單一循環、音效不中斷；暫停／靜音／返家停止，�
   assert.equal(track.loop,true);
   assert.ok(track.buffer.getChannelData(0).length>0);
   for(let i=0;i<100;i++) sound.update(state);
-  assert.equal(sources.filter(s=>s.loop).length,1);
+  assert.equal(sources.filter(s=>s.wasMusic).length,1);
   sound.play('attack');
   assert.equal(track.stopped,undefined);
   sound.update({...state,paused:true});
   assert.equal(track.stopped,true);
   sound.update(state);
-  assert.equal(sources.filter(s=>s.loop).length,2);
+  assert.equal(sources.filter(s=>s.wasMusic).length,2);
   sound.configure({sound:false,volume:70});
   assert.equal(sources.at(-1).stopped,true);
   sound.update(state);
-  assert.equal(sources.filter(s=>s.loop).length,2);
+  assert.equal(sources.filter(s=>s.wasMusic).length,2);
   sound.configure({sound:true,volume:70});
   sound.update(state);
   sound.update({...state,phase:'home'});
@@ -157,4 +157,40 @@ test('首次 resume 一直等待手勢時，後續點擊重新呼叫並成功，
   assert.match(sound.status,/音訊已啟動/);
   release();await pending;
   assert.match(sound.status,/音訊已啟動/);
+});
+
+test('短音片段不循環且有固定尾端；首頁影格不反覆切斷試聽，停止同時關閉手機輸出', async () => {
+  const fake=audio(),sources=[];
+  fake.context.sampleRate=8000;
+  fake.context.createBuffer=(_channels,length)=>{const data=new Float32Array(length);return {getChannelData:()=>data};};
+  fake.context.createBufferSource=()=>{const source={start(){},stop(){this.stopped=true;},connect(){},disconnect(){}};sources.push(source);return source;};
+  fake.context.createMediaStreamDestination=()=>({stream:{}});
+  const output={paused:true,muted:false,play(){this.paused=false;return Promise.resolve();},pause(){this.paused=true;}};
+  const sound=new Sound({createContext:()=>fake.context,createOutput:()=>output});
+  const home={session:0,turn:0,phase:'home'};
+  sound.update(home);
+  await sound.unlock();sound.play('attack','PERFECT');
+  const effect=sources.at(-1),data=effect.buffer.getChannelData(0);
+  assert.equal(effect.loop,false);
+  assert.ok(data.length/8000<.5);
+  assert.ok(data.some(n=>Math.abs(n)>.1));
+  assert.ok(Math.abs(data.at(-1))<.001);
+  for(let i=0;i<100;i++)sound.update(home);
+  assert.equal(effect.stopped,undefined);
+  assert.equal(output.paused,false);
+  sound.stop();
+  assert.equal(effect.stopped,true);
+  assert.equal(output.paused,true);
+  assert.equal(output.muted,true);
+});
+
+test('退出後遲到的音訊啟動完成不能重新打開手機輸出', async () => {
+  const fake=audio();let release;
+  fake.context.createMediaStreamDestination=()=>({stream:{}});
+  const output={paused:true,play(){return new Promise(resolve=>{release=()=>{this.paused=false;resolve();};});},pause(){this.paused=true;}};
+  const sound=new Sound({createContext:()=>fake.context,createOutput:()=>output});
+  const pending=sound.unlock();sound.stop();release();
+  assert.equal(await pending,false);
+  assert.equal(output.paused,true);
+  assert.equal(output.muted,true);
 });

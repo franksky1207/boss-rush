@@ -1,9 +1,9 @@
-import { evaluateResult, eligibleForLeaderboard, createRecord, validNickname } from '../core/results.js?v=0.9.3';
-import { LocalStore } from '../storage/local.js?v=0.9.3';
-import { Sound } from '../effects/sound.js?v=0.9.3';
-import { ACTIONS, DIFFICULTIES } from '../data/rules.js?v=0.9.3';
-import { Battle } from '../core/battle.js?v=0.9.3';
-import { Scene } from '../effects/scene.js?v=0.9.3';
+import { evaluateResult, eligibleForLeaderboard, createRecord, validNickname } from '../core/results.js?v=0.9.4';
+import { LocalStore } from '../storage/local.js?v=0.9.4';
+import { Sound } from '../effects/sound.js?v=0.9.4';
+import { ACTIONS, DIFFICULTIES } from '../data/rules.js?v=0.9.4';
+import { Battle } from '../core/battle.js?v=0.9.4';
+import { Scene } from '../effects/scene.js?v=0.9.4';
 
 const $ = id => document.getElementById(id);
 const battle = new Battle();
@@ -300,8 +300,9 @@ for (const button of buttons) {
   button.addEventListener('click', event => { if (event.detail === 0) submit(event); });
 }
 
-function protectBackground() { battle.pause(); render(); }
+function protectBackground() { sound.stop(); battle.pause(); render(); }
 document.addEventListener('visibilitychange', () => { if (document.hidden) protectBackground(); });
+window.addEventListener('pagehide', protectBackground);
 window.addEventListener('blur', protectBackground);
 window.addEventListener('resize', protectBackground);
 

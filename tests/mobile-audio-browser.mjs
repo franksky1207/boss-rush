@@ -14,6 +14,7 @@ try {
     window.AudioContext=class extends NativeContext {
       constructor(...args){super(...args);window.__audio=this;}
       createMediaStreamDestination(){const destination=super.createMediaStreamDestination();window.__stream=destination.stream;return destination;}
+      createBufferSource(){window.__oscillators=(window.__oscillators??0)+1;return super.createBufferSource();}
       createOscillator(){window.__oscillators=(window.__oscillators??0)+1;return super.createOscillator();}
     };
   });
@@ -35,6 +36,9 @@ try {
   await page.locator('#test-sound').click();
   await page.waitForFunction(()=>window.__outputs[0]?.paused===false);
   assert.equal(await page.evaluate(()=>window.__outputs.length),1);
+  await page.evaluate(()=>window.dispatchEvent(new Event('pagehide')));
+  assert.equal(await page.evaluate(()=>window.__outputs[0].paused),true);
+  assert.equal(await page.evaluate(()=>window.__outputs[0].muted),true);
   assert.deepEqual(errors,[]);
   console.log('PASS: iPhone detection, real media-stream audio output, trial sound, mute/re-enable, visible status');
 }finally{await browser.close();}

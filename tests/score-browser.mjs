@@ -39,6 +39,7 @@ async function contextFor({failure=null,seed=null,viewport={width:390,height:844
     if(NativeContext)window.AudioContext=class extends NativeContext {
       constructor(...args){super(...args);window.__audioCreated++;window.__audioContext=this;}
       createGain(){const gain=super.createGain();window.__audioGains.push(gain);return gain;}
+      createBufferSource(){window.__oscillators=(window.__oscillators??0)+1;return super.createBufferSource();}
       createOscillator(){window.__oscillators++;return super.createOscillator();}
     };
     if(failure==='blocked'&&NativeContext)window.AudioContext=class extends window.AudioContext {

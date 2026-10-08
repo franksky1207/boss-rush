@@ -18,9 +18,11 @@ export class Sound {
   #attempt = 0;
   #error = '';
   #event = '';
+  #silenceEvent = '';
   #music = null;
   #musicBuffer = null;
   #musicWanted = false;
+  #silenced = false;
   #settings = { sound: true, volume: 70 };
   unavailable = false;
 
@@ -60,6 +62,7 @@ export class Sound {
   unlock() {
     if (!this.#settings.sound || this.#settings.volume === 0) return Promise.resolve(false);
     try {
+      this.#silenced = false;
       if (!this.#context || this.#context.state === 'closed') {
         this.#context = this.#createContext();
         this.#musicBuffer = null;
@@ -81,6 +84,7 @@ export class Sound {
         }
       }
       if (this.#context.state === 'running' && (!this.#output || !this.#output.paused)) {
+        if (this.#output) this.#output.muted = false;
         ++this.#attempt;
         this.#unlocking = null;
         this.#error = '';
@@ -95,9 +99,14 @@ export class Sound {
         this.#error = '';
         // resume 與媒體 play 都必須直接在使用者手勢內呼叫，不能等另一個 Promise 完成。
         const resumed = this.#context.resume();
+        if (this.#output) this.#output.muted = false;
         const playing = this.#output?.play();
         this.#unlocking = Promise.all([resumed, playing])
           .then(() => {
+            if (this.#silenced) {
+              if (this.#output) { this.#output.muted = true; this.#output.pause?.(); }
+              return false;
+            }
             const ready = this.#context.state === 'running' && !this.#output?.paused;
             if (attempt === this.#attempt) this.unavailable = !ready;
             return ready;
@@ -117,6 +126,30 @@ export class Sound {
     this.#stopEffects();
     try {
       const notes = names.flatMap(name => NOTES[name] ?? []).slice(0, 6);
+      if (notes.length && this.#context.createBufferSource && this.#context.createBuffer) {
+        // 有限 PCM 片段到尾端自然結束，即使 Safari 的 oscillator.stop 回呼異常也不會持續鳴叫。
+        const rate = this.#context.sampleRate;
+        const duration = (notes.length - 1) * .065 + .13;
+        const buffer = this.#context.createBuffer(1, Math.ceil(rate * duration), rate);
+        const samples = buffer.getChannelData(0);
+        for (const [index, frequency] of notes.entries()) {
+          const offset = Math.round(index * .065 * rate);
+          for (let i = 0; i < Math.floor(.13 * rate) && offset + i < samples.length; i++) {
+            const t = i / rate;
+            const envelope = Math.min(1, t / .008) * Math.exp(-t * 48) * Math.max(0, Math.min(1, (.13 - t) / .01));
+            samples[offset + i] += .55 * envelope * Math.sin(2 * Math.PI * frequency * t);
+          }
+        }
+        const source = this.#context.createBufferSource(), gain = this.#context.createGain();
+        const voice = { oscillator: source, gain };
+        this.#voices.add(voice);
+        source.buffer = buffer;
+        source.loop = false;
+        source.connect(gain); gain.connect(this.#master);
+        source.onended = () => { source.disconnect(); gain.disconnect(); this.#voices.delete(voice); };
+        source.start();
+        return true;
+      }
       for (const [index, frequency] of notes.entries()) {
         const oscillator = this.#context.createOscillator();
         const gain = this.#context.createGain();
@@ -130,6 +163,7 @@ export class Sound {
         gain.gain.setValueAtTime(0, start);
         gain.gain.linearRampToValueAtTime(0.55, start + 0.008);
         gain.gain.exponentialRampToValueAtTime(0.001, start + 0.12);
+        gain.gain.setValueAtTime(0, start + .13);
         oscillator.onended = () => {
           oscillator.disconnect(); gain.disconnect(); this.#voices.delete(voice);
         };
@@ -145,7 +179,11 @@ export class Sound {
     if (this.#musicWanted) this.#startMusic();
     else this.#stopMusic();
     const event = `${state.session}:${state.turn}:${state.phase}`;
-    if (state.paused || state.phase === 'home') this.stop();
+    // 首頁／暫停只在進入時停止；不要每一影格切斷試聽音源或反覆操作媒體播放器。
+    const silence = Boolean(state.paused || state.phase === 'home');
+    const eventKey = `${event}:${silence}`;
+    if (silence && eventKey !== this.#silenceEvent) this.stop();
+    this.#silenceEvent = eventKey;
     if (event === this.#event) return;
     this.#event = event;
     if (state.paused) return;
@@ -159,6 +197,8 @@ export class Sound {
   }
 
   stop() {
+    this.#silenced = true;
+    if (this.#output) { this.#output.muted = true; this.#output.pause?.(); }
     this.#stopMusic();
     this.#stopEffects();
   }
@@ -192,7 +232,9 @@ export class Sound {
 
   #stopMusic() {
     if (!this.#music) return;
-    try { this.#music.stop(); this.#music.disconnect(); } catch { /* 音訊不可影響判定。 */ }
+    this.#music.loop = false;
+    try { this.#music.stop(); } catch { /* 已停止仍須切斷輸出。 */ }
+    try { this.#music.disconnect(); } catch { /* 音訊不可影響判定。 */ }
     this.#music = null;
   }
 
